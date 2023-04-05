@@ -12,6 +12,11 @@ import { ref } from 'vue';
       <!--切换按钮-->
       <van-switch v-model="checked" class="switch_language"/>
       <van-button type="primary" round > 开始调色 </van-button>
+      <van-divider>快速登录</van-divider>
+      <!--三个登录按钮的图标-->
+      <img alt="Vue logo" class="logo" src="@/assets/login/wechatLogin.svg" width="30" height="30" />
+      <img alt="Vue logo" class="logo" src="@/assets/login/qqLogin.svg" width="30" height="30" />
+      <img alt="Vue logo" class="logo" src="@/assets/login/weiboLogin.svg" width="30" height="30" />
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>

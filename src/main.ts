@@ -5,7 +5,7 @@ import App from './App.vue'
 import router from './router'
 
 // 1. 引入UI组件
-import { Button, Switch } from 'vant'
+import { Button, Switch, Divider } from 'vant'
 // 2. 引入组件样式
 import 'vant/lib/index.css'
 
@@ -19,5 +19,6 @@ app.use(createPinia())
 app.use(router)
 app.use(Button)
 app.use(Switch)
+app.use(Divider)
 
 app.mount('#app')
