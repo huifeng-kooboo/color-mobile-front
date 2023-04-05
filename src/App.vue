@@ -1,15 +1,17 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+import { ref } from 'vue';
 </script>
 
 <template>
   <header>
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
-
+      <!--切换按钮-->
+      <van-switch v-model="checked" class="switch_language"/>
+      <van-button type="primary" round > 开始调色 </van-button>
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
@@ -19,6 +21,10 @@ import HelloWorld from './components/HelloWorld.vue'
 
   <RouterView />
 </template>
+
+<script lang="ts">
+   const checked = ref(true);
+</script>
 
 <style scoped>
 header {
