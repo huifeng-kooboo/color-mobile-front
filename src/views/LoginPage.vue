@@ -7,11 +7,18 @@ import { ref } from 'vue';
     <van-row justify="end">
       <van-col span="6"><van-switch v-model="checked" class="switch_language" /></van-col>
     </van-row>
-
+    <van-space  direction="vertical" :size="150"></van-space>
+    <van-row justify="center">
+      <van-col ><img alt="Vue logo" class="logo wechatLogin" src="@/assets/login/logo.jpg" width="300"
+          height="300" /></van-col>
+    </van-row>
+    <van-space  direction="vertical" :size="300">
+    </van-space>
     <van-row justify="center">
       <van-col span="8"><van-button type="primary" round class="beginColorModify"> 开始调色 </van-button></van-col>
     </van-row>
-
+    <van-space  direction="vertical" :size="220">
+    </van-space>
 
     <van-divider class="quickLogin">快速登录</van-divider>
     <!--三个登录按钮的图标-->
