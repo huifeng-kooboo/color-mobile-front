@@ -14,7 +14,6 @@ const app = createApp(App)
 
 // 使用这些的控件
 app.use(createPinia())
-app.use(router)
 app.use(Button)
 app.use(Switch)
 app.use(Divider)
@@ -22,5 +21,4 @@ app.use(ConfigProvider)
 app.use(Col)
 app.use(Row)
 app.use(Space)
-
-app.mount('#app')
+app.use(router).mount('#app')
