@@ -15,7 +15,7 @@ import { ref } from 'vue';
     <van-space  direction="vertical" :size="300">
     </van-space>
     <van-row justify="center">
-      <van-col span="8"><van-button type="primary" round class="beginColorModify"> 开始调色 </van-button></van-col>
+      <van-col span="8"><van-button type="primary" @click="gotoMainPage()" round class="beginColorModify"> 开始调色 </van-button></van-col>
     </van-row>
     <van-space  direction="vertical" :size="220">
     </van-space>
@@ -36,6 +36,14 @@ import { ref } from 'vue';
 
 <script lang="ts">
 const checked = ref(true);
+export default {
+  methods: {
+    gotoMainPage(){
+      console.log("go to MainPage")
+      this.$router.push({path: "mainPage"})  // 进入到主页
+    }
+  }
+}
 </script>
 
 <style scoped>
