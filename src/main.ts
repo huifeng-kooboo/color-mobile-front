@@ -6,6 +6,9 @@ import router from './router'
 
 // 1. 引入UI组件
 import { Button, Switch, Divider, ConfigProvider, Row, Col, Space} from 'vant'
+
+import * as Three from 'three'
+
 // 2. 引入组件样式
 import 'vant/lib/index.css'
 import './assets/main.css'
@@ -21,4 +24,5 @@ app.use(ConfigProvider)
 app.use(Col)
 app.use(Row)
 app.use(Space)
+app.use(Three)
 app.use(router).mount('#app')
