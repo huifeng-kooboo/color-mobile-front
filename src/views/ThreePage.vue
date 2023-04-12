@@ -30,7 +30,7 @@
   
         // 添加模型
         const loader = new FBXLoader()
-        loader.load('D:/test.fbx', (object) => {
+        loader.load('src/views/test.fbx', (object) => {
           scene.add(object)
         })
   
