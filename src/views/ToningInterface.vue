@@ -10,13 +10,21 @@ import { ref } from 'vue';
     <van-row>
         <label style="color: black;">FBX文件显示</label>
     </van-row>
-    <van-row>
+    <van-row justify="center">
         <van-button round type="primary" @click="showCurrentModel">加载模型文件</van-button>
     </van-row>
     <van-row class="mainView">
-        <!--模型显示区域-->
-        <div class="modelContainer">
-        </div>
+        <van-col span="2">
+            <van-icon name="arrow-left" @click="showCurrentModel" />
+        </van-col>
+        <van-col span="20" >
+            <div class="modelContainer">
+            </div>
+        </van-col>
+        <van-col span="2">
+            <van-icon name="arrow-right" @click="showCurrentModel" />
+        </van-col>
+
     </van-row>
     <van-space  direction="vertical" :size="100">
     </van-space>
@@ -59,6 +67,8 @@ import { ref } from 'vue';
 
 
 <script lang="ts">
+const file_list = ["/test.fbx","/test1.fbx", "/test2.fbx", "/test3.fbx"]
+var cur_index = 0
 const afterRead = (file: File) => {
       // 此时可以自行将文件上传至服务器
       console.log(file);
@@ -77,9 +87,19 @@ export default {
     components: {
     // "chrome-picker": Chrome,
   },
+  data() {
+    return {
+        current_index : 1,
+    }
+  },
     methods: {
         showCurrentModel(){
-            getFileFromUrl("/test.fbx", function(inputFile){
+            cur_index = cur_index + 1
+            if (cur_index > 3)
+            {
+                cur_index = 0
+            }
+            getFileFromUrl(file_list[cur_index], function(inputFile){
                 console.log("show model begim")
                 uploadModelFile(inputFile)
                 console.log("show model end")
