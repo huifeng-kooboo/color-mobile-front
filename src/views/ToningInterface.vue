@@ -32,6 +32,11 @@ import { ref } from 'vue';
             <label style="color:black">材质</label>
         </van-col>
     </van-row>
+
+    <van-row>
+        <li v-for="(item,index) in material_res" style="color: white;"><van-button type="primary" style="color: black; background-color: white; margin-top:10px;">{{ item }}</van-button></li>
+    </van-row>
+
     <van-space  direction="vertical" :size="100">
     </van-space>
     <van-row>
