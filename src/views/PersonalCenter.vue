@@ -1,7 +1,6 @@
 <!--个人中心-->
 <script setup lang="ts">
-import type { Button } from 'vant';
-import TheWelcome from '../components/TheWelcome.vue'
+import ChoosePage from '@/components/ChoosePage.vue'
 </script>
 
 <template>
@@ -9,5 +8,6 @@ import TheWelcome from '../components/TheWelcome.vue'
         <van-row>
             <van-button round type="primary">个人中心ToDo</van-button>
         </van-row>
+        <ChoosePage />
     </div>
 </template>

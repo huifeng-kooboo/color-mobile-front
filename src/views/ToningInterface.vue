@@ -1,5 +1,6 @@
 <!--调色页面-->
 <script setup lang="ts">
+import ChoosePage from '@/components/ChoosePage.vue'
 </script>
 
 <template> 
@@ -30,9 +31,10 @@
     <van-row>
         <van-divider />
     </van-row>
-    <van-grid clickable :column-num="2">
+    <!-- <van-grid clickable :column-num="2">
         <van-grid-item style="background-color: aqua;" icon="home-o" text="首页" to="/" />
         <van-grid-item style="background-color: aqua;" icon="manager" text="个人中心" to="/personalCenter" />
-      </van-grid>
+    </van-grid> -->
+    <ChoosePage />
   </div>
 </template>
