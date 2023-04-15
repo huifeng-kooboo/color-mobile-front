@@ -8,8 +8,17 @@ import { ref } from 'vue';
 <template> 
   <div class="toningInteface">
     <van-row justify="center">
-        <van-button round type="primary" @click="showCurrentModel">加载模型文件</van-button>
+        <van-pagination v-model="currentPage" :total-items="50" :show-page-size="5">
+            <template #prev-text>
+              <van-icon name="arrow-left" />
+            </template>
+            <template #next-text>
+              <van-icon name="arrow" />
+            </template>
+            <template #page="{ text }">{{ text }}</template>
+        </van-pagination>
     </van-row>
+
     <van-row class="mainView">
         <van-col span="2">
             <van-icon name="arrow-left" @click="showCurrentModel" />
@@ -61,6 +70,7 @@ import { ref } from 'vue';
 
 <script lang="ts">
 const file_list = ["/test.fbx","/test1.fbx", "/test2.fbx", "/test3.fbx"]
+const currentPage = ref(3)
 var cur_index = 0
 const afterRead = (file: File) => {
       // 此时可以自行将文件上传至服务器
@@ -99,6 +109,9 @@ export default {
             })
 
         }
-    }
+    },
+   created() {
+      this.showCurrentModel();
+   }
 }
 </script>

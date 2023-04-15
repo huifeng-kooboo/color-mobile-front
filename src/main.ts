@@ -6,15 +6,10 @@ import router from './router'
 
 // 1. 引入UI组件
 import { Button, Switch, Divider, ConfigProvider,Uploader ,Row, Col, Space, Grid, GridItem, Field} from 'vant'
-import { Swipe, SwipeItem, Icon } from 'vant';
-// const vue-color = require("vue-color")
-// import ElementPlus from 'element-plus'
+import { Swipe, SwipeItem, Icon, Pagination } from 'vant';
 import 'element-plus/theme-chalk/index.css'
 import {ElColorPicker, ElCarousel, ElCarouselItem} from 'element-plus'
-// import { Chrome } from 'vue-color';
 import vcolorpicker from 'vcolorpicker'
-  
-// import * as Three from 'three'
 
 // 2. 引入组件样式
 import 'vant/lib/index.css'
@@ -42,6 +37,7 @@ app.use(ElCarouselItem)
 app.use(Swipe)
 app.use(SwipeItem)
 app.use(Icon)
+app.use(Pagination)
 // app.use(Chrome)
 app.use(router).mount('#app')
 
