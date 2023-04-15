@@ -39,8 +39,8 @@ const checked = ref(true);
 export default {
   methods: {
     gotoMainPage(){
-      console.log("go to MainPage")
-      this.$router.push({path: "mainPage"})  // 进入到主页
+      console.log("go to toningInterface")
+      this.$router.push({path: "toningInterface"})  // 进入到主页
     }
   }
 }

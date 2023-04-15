@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import MainPage from '../views/MainPage.vue'
 import LoginPage from '@/views/LoginPage.vue'
-import ThreePage from '@/views/ThreePage.vue'
+import ToningInterface from '@/views/ToningInterface.vue'
 
 const router = createRouter({
   // history: createWebHistory(import.meta.env.BASE_URL),
@@ -31,9 +31,9 @@ const router = createRouter({
       name: 'mainPage',
       component: MainPage
     }, {
-      path: '/threePage',
-      name: 'three',
-      component: ThreePage
+      path: '/toningInterface',
+      name: 'toningInteface',
+      component: ToningInterface
     }
   ]
 })
