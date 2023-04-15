@@ -8,29 +8,22 @@ import { ref } from 'vue';
 <template> 
   <div class="toningInteface">
     <van-row justify="center">
-        <van-pagination v-model="currentPage" :total-items="50" :show-page-size="5">
+        <van-pagination v-model="currentPage" :total-items="50" :show-page-size="5" style="--van-pagination-item-width: 50px;
+        --van-pagination-item-default-color: #c8c8c8; --van-pagination-item-disabled-color: blue;" @change="changePagePopModel">
             <template #prev-text>
-              <van-icon name="arrow-left" />
+              <van-icon name="arrow-left" style="color:black" />
             </template>
             <template #next-text>
-              <van-icon name="arrow" />
+              <van-icon name="arrow"  style="color:black" />
             </template>
-            <template #page="{ text }">{{ text }}</template>
+            <template #page="{ text }"><h1 style="font-size:x-small; color: black;">{{dict_res[text]}}</h1></template>
         </van-pagination>
     </van-row>
-
     <van-row class="mainView">
-        <van-col span="2">
-            <van-icon name="arrow-left" @click="showCurrentModel" />
-        </van-col>
         <van-col span="20" >
             <div class="modelContainer">
             </div>
         </van-col>
-        <van-col span="2">
-            <van-icon name="arrow-right" @click="showCurrentModel" />
-        </van-col>
-
     </van-row>
     <van-space  direction="vertical" :size="100">
     </van-space>
@@ -71,6 +64,8 @@ import { ref } from 'vue';
 <script lang="ts">
 const file_list = ["/test.fbx","/test1.fbx", "/test2.fbx", "/test3.fbx"]
 const currentPage = ref(3)
+const showPageText = ref("test")
+const dict_res = ["bomo", "方型瓶子","盖子","罐子","软管","圆型瓶子"]
 var cur_index = 0
 const afterRead = (file: File) => {
       // 此时可以自行将文件上传至服务器
@@ -108,6 +103,15 @@ export default {
                 console.log("show model end")
             })
 
+        },
+        changePagePopModel(pageNum:number)
+        {
+            console.log(pageNum)
+            getFileFromUrl(file_list[pageNum-1], function(inputFile){
+                console.log("show model begim")
+                uploadModelFile(inputFile)
+                console.log("show model end")
+            })
         }
     },
    created() {
