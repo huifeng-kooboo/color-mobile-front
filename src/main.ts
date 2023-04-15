@@ -5,7 +5,7 @@ import App from './App.vue'
 import router from './router'
 
 // 1. 引入UI组件
-import { Button, Switch, Divider, ConfigProvider, Row, Col, Space, Grid, GridItem} from 'vant'
+import { Button, Switch, Divider, ConfigProvider,Uploader ,Row, Col, Space, Grid, GridItem, Field} from 'vant'
 
 import * as Three from 'three'
 
@@ -27,4 +27,6 @@ app.use(Space)
 app.use(Three)
 app.use(Grid)
 app.use(GridItem)
+app.use(Field)
+app.use(Uploader)
 app.use(router).mount('#app')

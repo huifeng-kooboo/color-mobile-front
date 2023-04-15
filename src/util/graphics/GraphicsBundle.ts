@@ -96,7 +96,8 @@ function onModelLoaded( model: Object3D, rotation: Rotation ) {
 
     const sphereGeometry = new SphereGeometry( 1.65 * PROTON_MODEL_BOUNDING_SPHERE.radius );
     PROTON_CAMERA_SPHERE = new Mesh( sphereGeometry, new MeshBasicMaterial({
-        color: 0xffffff
+       //  color: 0xffffff,
+        color: 0xffffff,
     }) );
     group.add( PROTON_CAMERA_SPHERE );
 

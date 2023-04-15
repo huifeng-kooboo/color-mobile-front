@@ -11,11 +11,13 @@ const VALID_FILE_EXTENSIONS = [
     "glb",
     "3dm",
     "ply",
-    "stl"
+    "stl",
+    "FBX"
 ];
 
 function uploadModelFile( file: File ) {
     const filename = file.name;
+    console.log("当前filename:", filename)
     const fileExtension = parseFileExtension( filename );
     if( !isValidFileExtension( fileExtension ) ) {
         throw new InvalidFileExtensionError();
