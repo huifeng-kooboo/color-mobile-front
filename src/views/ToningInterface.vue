@@ -17,13 +17,15 @@ import { uploadModelFile } from '@/util/upload';
         <div class="modelContainer">
         </div>
     </van-row>
-
+    <van-space  direction="vertical" :size="100">
+    </van-space>
     <van-row>
         <van-col>
             <label style="color:black">材质</label>
         </van-col>
     </van-row>
-
+    <van-space  direction="vertical" :size="100">
+    </van-space>
     <van-row>
         <van-col>
             <label style="color:black">颜色</label>
