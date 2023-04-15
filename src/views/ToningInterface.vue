@@ -21,6 +21,7 @@ import { ref } from 'vue';
     </van-row>
     <van-row class="mainView">
         <van-col span="20" >
+            <!-- 实际fbx模型存放在这里 -->
             <div class="modelContainer">
             </div>
         </van-col>

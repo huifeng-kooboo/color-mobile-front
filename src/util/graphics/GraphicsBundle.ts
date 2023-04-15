@@ -49,12 +49,12 @@ function onModelLoaded( model: Object3D, rotation: Rotation , mainColor="#df7920
     });
     PROTON_SCENE.add( mainLight, spotLight );
 
-    PROTON_CAMERA = new PerspectiveCamera( 45, window.innerWidth / ( window.innerHeight - 100 ), 0.1, 1000000 );
+    PROTON_CAMERA = new PerspectiveCamera( 45, window.innerWidth / ( window.innerHeight - 400 ), 0.1, 1000000 );
     const renderer = new WebGLRenderer({
         alpha: true,
         antialias: true
     });
-    renderer.setSize( window.innerWidth, window.innerHeight - 100 );
+    renderer.setSize( window.innerWidth, window.innerHeight - 400 );
 
     const controls = new OrbitControls( PROTON_CAMERA, renderer.domElement );
     controls.enablePan = false;
@@ -129,9 +129,9 @@ function onModelLoaded( model: Object3D, rotation: Rotation , mainColor="#df7920
     });
 
     function resize() {
-        PROTON_CAMERA.aspect = window.innerWidth / ( window.innerHeight - 100 );
+        PROTON_CAMERA.aspect = window.innerWidth / ( window.innerHeight - 400 );
         PROTON_CAMERA.updateProjectionMatrix();
-        renderer.setSize( window.innerWidth, window.innerHeight - 100 );
+        renderer.setSize( window.innerWidth, window.innerHeight - 400 );
         renderer.render( PROTON_SCENE, PROTON_CAMERA );
     }
     resize();
