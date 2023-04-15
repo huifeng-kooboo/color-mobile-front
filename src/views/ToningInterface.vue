@@ -2,6 +2,7 @@
 <script setup lang="ts">
 import ChoosePage from '@/components/ChoosePage.vue';
 import { uploadModelFile } from '@/util/upload';
+import { ref } from 'vue';
 </script>
 
 <template> 
@@ -32,7 +33,7 @@ import { uploadModelFile } from '@/util/upload';
         </van-col>
     </van-row>
     <van-row>
-        <colorPicker v-model="color" />
+        <el-color-picker v-model="color" v-on:change="changeColor" />
     </van-row>
 
     <van-row justify="center" class="saverow">
@@ -64,15 +65,16 @@ const afterRead = (file: File) => {
       uploadModelFile(file);
 };
 
+const color = ref("#409EFF");
+
+const changeColor = (current_color:string) =>{
+    console.log("当前color:", current_color)
+}
+
 export default {
     components: {
     // "chrome-picker": Chrome,
   },
-    data() {
-        return {
-            color: '#ff0000',
-        }
-    },
     methods: {
         showCurrentModel(e: Event ){
             const target = e.target as HTMLInputElement;

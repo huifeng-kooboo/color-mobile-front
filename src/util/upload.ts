@@ -2,7 +2,7 @@ import { getAssociatedLoader } from './loaders/loader';
 import { InvalidFileExtensionError } from './InvalidFileExtensionError';
 import { onModelLoaded } from './graphics/GraphicsBundle';
 import { useStatsStore } from '../store/stats';
-import { Object3D } from 'three';
+import type { Object3D } from 'three';
 
 const VALID_FILE_EXTENSIONS = [
     "obj",

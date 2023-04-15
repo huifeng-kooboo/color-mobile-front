@@ -7,7 +7,9 @@ import router from './router'
 // 1. 引入UI组件
 import { Button, Switch, Divider, ConfigProvider,Uploader ,Row, Col, Space, Grid, GridItem, Field} from 'vant'
 // const vue-color = require("vue-color")
-
+// import ElementPlus from 'element-plus'
+import 'element-plus/theme-chalk/index.css'
+import {ElColorPicker} from 'element-plus'
 // import { Chrome } from 'vue-color';
 import vcolorpicker from 'vcolorpicker'
   
@@ -33,5 +35,6 @@ app.use(GridItem)
 app.use(Field)
 app.use(Uploader)
 app.use(vcolorpicker)
+app.use(ElColorPicker)
 // app.use(Chrome)
 app.use(router).mount('#app')
