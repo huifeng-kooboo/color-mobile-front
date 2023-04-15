@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import MainPage from '../views/MainPage.vue'
 import LoginPage from '@/views/LoginPage.vue'
 import ToningInterface from '@/views/ToningInterface.vue'
+import PersonalCenter from '@/views/PersonalCenter.vue'
 
 const router = createRouter({
   // history: createWebHistory(import.meta.env.BASE_URL),
@@ -34,6 +35,10 @@ const router = createRouter({
       path: '/toningInterface',
       name: 'toningInteface',
       component: ToningInterface
+    }, {
+      path: '/personalCenter',
+      name: 'personalCenter',
+      component: PersonalCenter
     }
   ]
 })

@@ -5,6 +5,13 @@
 <template> 
   <div class="toningInteface">
     <van-row>
+        <label style="color: black;">FBX文件显示</label>
+    </van-row>
+    <van-row justify="center" class="mainView">
+
+    </van-row>
+
+    <van-row>
         <van-col>
             <label style="color:black">材质</label>
         </van-col>
@@ -24,8 +31,8 @@
         <van-divider />
     </van-row>
     <van-grid clickable :column-num="2">
-        <van-grid-item icon="home-o" text="首页" to="/" />
-        <van-grid-item icon="search" text="个人中心" url="https://github.com" />
+        <van-grid-item style="background-color: aqua;" icon="home-o" text="首页" to="/" />
+        <van-grid-item style="background-color: aqua;" icon="manager" text="个人中心" to="/personalCenter" />
       </van-grid>
   </div>
 </template>
