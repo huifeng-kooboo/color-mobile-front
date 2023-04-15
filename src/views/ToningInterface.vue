@@ -20,13 +20,13 @@ import { ref } from 'vue';
         </van-pagination>
     </van-row>
     <van-row class="mainView">
-        <van-col span="20" >
+        <van-col>
             <!-- 实际fbx模型存放在这里 -->
             <div class="modelContainer">
             </div>
         </van-col>
     </van-row>
-    <van-space  direction="vertical" :size="100">
+    <van-space  direction="vertical" :size="50">
     </van-space>
     <van-row>
         <van-col>
@@ -37,8 +37,7 @@ import { ref } from 'vue';
     <van-row>
         <li v-for="(item,index) in material_res" style="color: white;"><van-button type="primary" style="color: black; background-color: white; margin-top:10px;">{{ item }}</van-button></li>
     </van-row>
-
-    <van-space  direction="vertical" :size="100">
+    <van-space  direction="vertical" :size="30">
     </van-space>
     <van-row>
         <van-col>
@@ -62,7 +61,7 @@ import { ref } from 'vue';
 </template>
 <style scoped>
 .modelContainer {
-    height:500px;
+    height:300px;
 }
 </style>
 
