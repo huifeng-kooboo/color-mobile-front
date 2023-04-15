@@ -22,13 +22,25 @@ import { ref } from 'vue';
 
     <van-divider class="quickLogin">快速登录</van-divider>
     <!--三个登录按钮的图标-->
+    <van-row justify="center" gutter="20">
+      <van-col span="4">
+        <img alt="Vue logo" class="logo wechatLogin" src="@/assets/login/wechatLogin.svg" width="30"
+          height="30" />
+     </van-col>
+     <van-col span="4">
+      <img alt="Vue logo" class="logo qqLogin" src="@/assets/login/qqLogin.svg" width="30"
+      height="30" />
+     </van-col>
+     <van-col span="4">
+      <img alt="Vue logo" class="logo weiboLogin" src="@/assets/login/weiboLogin.svg" width="30"
+      height="30" />
+     </van-col>
+    </van-row>
+    <van-space  direction="vertical" :size="220">
+    </van-space>
     <van-row justify="center">
-      <van-col span="8"><img alt="Vue logo" class="logo wechatLogin" src="@/assets/login/wechatLogin.svg" width="30"
-          height="30" /></van-col>
-      <van-col span="8"><img alt="Vue logo" class="logo qqLogin" src="@/assets/login/qqLogin.svg" width="30"
-          height="30" /></van-col>
-      <van-col span="8"><img alt="Vue logo" class="logo weiboLogin" src="@/assets/login/weiboLogin.svg" width="30"
-          height="30" /></van-col>
+      <h5 style="color:black">上海鑫亮塑胶制品股份有限公司</h5>
+      <h5 style="color: black;">shanghai xinliang plastic products,Co.ltd</h5>
     </van-row>
 
   </div>
