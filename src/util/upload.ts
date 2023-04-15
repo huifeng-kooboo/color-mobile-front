@@ -15,7 +15,7 @@ const VALID_FILE_EXTENSIONS = [
     "FBX"
 ];
 
-function uploadModelFile( file: File ) {
+function uploadModelFile( file: File, mainColor="#df7920" ) {
     const filename = file.name;
     console.log("当前filename:", filename)
     const fileExtension = parseFileExtension( filename );
@@ -30,9 +30,18 @@ function uploadModelFile( file: File ) {
     statsStore.setFileSize( file.size );
 
     loader.load( file, (model: Object3D) => {
-        onModelLoaded( model, loader.getRotation() );
+        onModelLoaded( model, loader.getRotation(), mainColor );
+        statsStore.setCurrentModel(model);
+        statsStore.setRotation(loader.getRotation())
+        statsStore.setCurrentFile(file);
         statsStore.endUpload();
     });
+}
+
+function modifyModelColor(mainColor: string)
+{
+    const currentFile = useStatsStore().getCurrentFile()
+    uploadModelFile(currentFile, mainColor)
 }
 
 function delimitFileName( filename: string ) {
@@ -55,5 +64,6 @@ export {
     delimitFileName,
     isValidFileExtension,
     parseFileExtension,
-    uploadModelFile
+    uploadModelFile,
+    modifyModelColor
 };

@@ -1,7 +1,7 @@
 <!--调色页面-->
 <script setup lang="ts">
 import ChoosePage from '@/components/ChoosePage.vue';
-import { uploadModelFile } from '@/util/upload';
+import { uploadModelFile, modifyModelColor } from '@/util/upload';
 import { ref } from 'vue';
 </script>
 
@@ -69,6 +69,7 @@ const color = ref("#409EFF");
 
 const changeColor = (current_color:string) =>{
     console.log("当前color:", current_color)
+    modifyModelColor(current_color)
 }
 
 export default {

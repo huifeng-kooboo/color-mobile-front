@@ -1,5 +1,7 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
+import { Object3D } from 'three';
+import { Rotation } from "@/util/graphics/Rotation";
 
 const useStatsStore = defineStore('stats', () => {
     const numVertices = ref(0);
@@ -10,6 +12,12 @@ const useStatsStore = defineStore('stats', () => {
     const endUploadTime = ref(0);
 
     const isShowingModelStats = ref(false);
+
+    const currentModel = ref(Object3D.prototype);
+
+    const currentFile = ref(File.prototype);
+
+    const currentRoatation = ref(new Rotation(22,22,22));
 
     function setNumVertices( vertices: number ) {
         numVertices.value = vertices;
@@ -39,6 +47,37 @@ const useStatsStore = defineStore('stats', () => {
         return endUploadTime.value - startUploadTime.value;
     }
 
+    function setCurrentModel( curModel: Object3D)
+    {
+        currentModel.value = curModel;
+    }
+
+    function getCurrentModel()
+    {
+        return currentModel.value
+    }
+
+    function setRotation(rotation_:Rotation)
+    {
+        currentRoatation.value = rotation_
+    }
+
+    function getRotation()
+    {
+        return currentRoatation.value
+    }
+
+    function setCurrentFile(file: File)
+    {
+        currentFile.value = file
+    }
+
+    function getCurrentFile()
+    { 
+        return currentFile.value
+    }
+    
+
     return {
         numVertices,
         numTriangles,
@@ -50,7 +89,13 @@ const useStatsStore = defineStore('stats', () => {
         setIsShowingModelStats,
         startUpload,
         endUpload,
-        getUploadTime
+        getUploadTime,
+        setCurrentModel,
+        getCurrentModel,
+        setRotation,
+        getRotation,
+        setCurrentFile,
+        getCurrentFile
     }
 });
 
