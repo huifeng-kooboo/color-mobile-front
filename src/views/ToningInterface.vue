@@ -9,7 +9,7 @@ import { ref } from 'vue';
   <div class="toningInteface">
     <van-row justify="center">
         <van-pagination v-model="currentPage" :total-items="50" :show-page-size="5" style="--van-pagination-item-width: 50px;
-        --van-pagination-item-default-color: #c8c8c8; --van-pagination-item-disabled-color: blue;" @change="changePagePopModel">
+        --van-pagination-item-default-color: #c8c8c8; --van-pagination-item-disabled-color: blue; --van-pagination-height: 40px;" @change="changePagePopModel">
             <template #prev-text>
               <van-icon name="arrow-left" style="color:black" />
             </template>
@@ -66,6 +66,7 @@ const file_list = ["/test.fbx","/test1.fbx", "/test2.fbx", "/test3.fbx"]
 const currentPage = ref(3)
 const showPageText = ref("test")
 const dict_res = ["bomo", "方型瓶子","盖子","罐子","软管","圆型瓶子"]
+const material_res = ["PP罐", "AS.ABS", "PETG","PET", "压克力"]
 var cur_index = 0
 const afterRead = (file: File) => {
       // 此时可以自行将文件上传至服务器
