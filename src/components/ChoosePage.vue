@@ -1,8 +1,9 @@
 <template>
     <div>
-        <van-grid clickable :column-num="2">
-            <van-grid-item style="background-color: aqua;" icon="home-o" text="首页" to="/" />
-            <van-grid-item style="background-color: aqua;" icon="manager" text="个人中心" to="/personalCenter" />
+        <van-grid clickable :column-num="3">
+            <van-grid-item style="background-color: aqua;" icon-color="#2ea6e2" icon="home-o"  to="/" />
+            <van-grid-item style="background-color: aqua;" icon-color="#2ea6e2" icon="plus"  to="/" />
+            <van-grid-item style="background-color: aqua;" icon-color="#2ea6e2" icon="manager" to="/personalCenter" />
         </van-grid>
     </div>
 
