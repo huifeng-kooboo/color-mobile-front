@@ -2,12 +2,12 @@ import { Rotation } from '../graphics/Rotation';
 import { Color, Mesh, MeshStandardMaterial } from 'three';
 import type { BufferGeometry, Object3D } from 'three';
 
-import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
-import { STLLoader } from 'three/examples/jsm/loaders/STLLoader';
-import { PLYLoader } from 'three/examples/jsm/loaders/PLYLoader';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader';
-import { Rhino3dmLoader } from 'three/examples/jsm/loaders/3DMLoader';
+import type { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
+import type { STLLoader } from 'three/examples/jsm/loaders/STLLoader';
+import type { PLYLoader } from 'three/examples/jsm/loaders/PLYLoader';
+import type { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import type { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader';
+import type { Rhino3dmLoader } from 'three/examples/jsm/loaders/3DMLoader';
 
 type ArrayBufferLoader = GLTFLoader | STLLoader | PLYLoader | Rhino3dmLoader | FBXLoader;
 type PlainTextLoader = OBJLoader;
@@ -106,7 +106,6 @@ abstract class CustomLoader {
         const material = new MeshStandardMaterial();
         material.flatShading = true;
         material.color = new Color( 0xE6E6E6 );
-
         return new Mesh( bufferGeometry, material );
     }
 

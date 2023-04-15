@@ -20,7 +20,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 import * as TWEEN from '@tweenjs/tween.js';
 
-import { Rotation } from './Rotation';
+import type { Rotation } from './Rotation';
 import { useUploadStore } from '../../store/upload';
 import { useStatsStore } from '../../store/stats';
 

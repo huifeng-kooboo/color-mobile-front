@@ -1,6 +1,6 @@
 import { parseFileExtension } from '../upload';
 
-import { CustomLoader } from './CustomLoader';
+import type { CustomLoader } from './CustomLoader';
 import { OBJLoader } from './OBJLoader';
 import { FBXLoader } from './FBXLoader';
 import { GLTFLoader } from './GLTFLoader';
@@ -11,6 +11,7 @@ import { Rhino3DMLoader } from './3DMLoader';
 const EXTENSIONS_TO_LOADER = new Map();
 EXTENSIONS_TO_LOADER.set( "obj", OBJLoader );
 EXTENSIONS_TO_LOADER.set( "fbx", FBXLoader );
+EXTENSIONS_TO_LOADER.set( "FBX", FBXLoader );
 EXTENSIONS_TO_LOADER.set( "gltf", GLTFLoader );
 EXTENSIONS_TO_LOADER.set( "glb", GLTFLoader );
 EXTENSIONS_TO_LOADER.set( "ply", PLYLoader );

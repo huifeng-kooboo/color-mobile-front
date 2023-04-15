@@ -29,6 +29,10 @@ import { uploadModelFile } from '@/util/upload';
             <label style="color:black">颜色</label>
         </van-col>
     </van-row>
+    <van-row>
+        <colorPicker v-model="color" />
+    </van-row>
+
     <van-row justify="center" class="saverow">
         <van-col>
             <van-button round type="primary">保存设置</van-button>
@@ -52,7 +56,6 @@ import { uploadModelFile } from '@/util/upload';
 
 
 <script lang="ts">
-
 const afterRead = (file: File) => {
       // 此时可以自行将文件上传至服务器
       console.log(file);
@@ -60,6 +63,14 @@ const afterRead = (file: File) => {
 };
 
 export default {
+    components: {
+    // "chrome-picker": Chrome,
+  },
+    data() {
+        return {
+            color: '#ff0000',
+        }
+    },
     methods: {
         showCurrentModel(e: Event ){
             const target = e.target as HTMLInputElement;

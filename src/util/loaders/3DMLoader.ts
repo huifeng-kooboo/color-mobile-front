@@ -1,4 +1,4 @@
-import { Object3D } from 'three';
+import type { Object3D } from 'three';
 import { Rhino3dmLoader as THREE_RHINO } from 'three/examples/jsm/loaders/3DMLoader';
 import { Rotation } from '../graphics/Rotation';
 import { ArrayBufferCustomLoader } from "./CustomLoader";
