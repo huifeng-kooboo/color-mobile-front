@@ -15,7 +15,7 @@ import { ref } from 'vue';
     <van-space  direction="vertical" :size="300">
     </van-space>
     <van-row justify="center">
-      <van-col span="8"><van-button type="primary" @click="gotoMainPage()" round class="beginColorModify">{{ colorText }}</van-button></van-col>
+      <van-col span="8"><van-button type="primary" @click="gotoMainPage()" style="width:130px" round class="beginColorModify">{{ colorText }}</van-button></van-col>
     </van-row>
     <van-space  direction="vertical" :size="220">
     </van-space>
@@ -69,7 +69,7 @@ export default {
       else{
         console.log("no checked")
         loginText.value = "Quick Log in"
-        colorText.value = "  Start  "
+        colorText.value = "    Start    "
       }
     }
   }
