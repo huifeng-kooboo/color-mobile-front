@@ -34,7 +34,7 @@ let PROTON_CAMERA_SPHERE: Mesh;
 const NUM_POINTS_PER_TRIANGLE = 3;
 const ZOOM_ANIMATION_DURATION = 50;
 
-function onModelLoaded( model: Object3D, rotation: Rotation , mainColor="#df7920") {
+function onModelLoaded( model: Object3D, rotation: Rotation , mainColor="#409EFF") {
 
     PROTON_SCENE = new Scene();
     PROTON_SCENE.background = null;

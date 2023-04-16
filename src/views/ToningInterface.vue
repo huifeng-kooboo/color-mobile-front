@@ -46,8 +46,11 @@ import { useTranslateStore } from '@/store/translate';
             <label style="color:black">{{ colorText }}</label>
         </van-col>
     </van-row>
-    <van-row>
+    <van-row justify="center">
         <el-color-picker v-model="color" v-on:change="changeColor" />
+    </van-row>
+    <van-row justify="center" >
+        <van-tag type="primary" style="color: black; border-color: black; height: 30px; background-color: white; border-width: 2px;"> {{ color }}</van-tag>
     </van-row>
 
     <van-row justify="center" class="saverow">
