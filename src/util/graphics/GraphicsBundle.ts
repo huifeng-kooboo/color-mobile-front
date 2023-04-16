@@ -5,6 +5,7 @@ import {
     Group,
     Mesh,
     MeshBasicMaterial,
+    MeshPhongMaterial,
     MeshLambertMaterial,
     Object3D,
     PerspectiveCamera,
@@ -34,7 +35,7 @@ let PROTON_CAMERA_SPHERE: Mesh;
 const NUM_POINTS_PER_TRIANGLE = 3;
 const ZOOM_ANIMATION_DURATION = 50;
 
-function onModelLoaded( model: Object3D, rotation: Rotation , mainColor="#409EFF") {
+function onModelLoaded( model: Object3D, rotation: Rotation , mainColor="#409EFF", materialName="phong") {
 
     PROTON_SCENE = new Scene();
     PROTON_SCENE.background = null;
@@ -96,11 +97,24 @@ function onModelLoaded( model: Object3D, rotation: Rotation , mainColor="#409EFF
     }
 
     const sphereGeometry = new SphereGeometry( 1.65 * PROTON_MODEL_BOUNDING_SPHERE.radius );
-    PROTON_CAMERA_SPHERE = new Mesh( sphereGeometry, new MeshBasicMaterial({
-       //  color: 0xffffff,
-        color: 0xffffff,
-    }) );
-    group.add( PROTON_CAMERA_SPHERE );
+
+    if (materialName == "phong")
+    {
+        PROTON_CAMERA_SPHERE = new Mesh( sphereGeometry, new MeshPhongMaterial({
+            //  color: 0xffffff,
+             color: 0xffffff,
+         }) );
+         group.add( PROTON_CAMERA_SPHERE );
+    }
+    else {
+        PROTON_CAMERA_SPHERE = new Mesh( sphereGeometry, new MeshBasicMaterial({
+            //  color: 0xffffff,
+             color: 0xffffff,
+         }) );
+         group.add( PROTON_CAMERA_SPHERE );
+    }
+
+
 
     PROTON_SCENE.add( group );
 
@@ -207,10 +221,20 @@ function adjustProtonCamera( animationDuration: number ) {
         );
     })
     .onComplete(() => {
-        PROTON_CAMERA_SPHERE.material = new MeshLambertMaterial({
-            transparent: true,
-            opacity: 0.0
-        });
+        if(useStatsStore().getCurrentMaterialName() == "phong")
+        {
+            PROTON_CAMERA_SPHERE.material = new MeshPhongMaterial({
+                transparent: true,
+                opacity: 0.0
+            });
+        }
+        else{
+            PROTON_CAMERA_SPHERE.material = new MeshLambertMaterial({
+                transparent: true,
+                opacity: 0.0
+            });
+        }
+
     })
     .start();
 }

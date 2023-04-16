@@ -19,6 +19,8 @@ const useStatsStore = defineStore('stats', () => {
 
     const currentRoatation = ref(new Rotation(22,22,22));
 
+    const materialName = ref("phong"); // 材质名称
+
     function setNumVertices( vertices: number ) {
         numVertices.value = vertices;
     }
@@ -76,6 +78,16 @@ const useStatsStore = defineStore('stats', () => {
     { 
         return currentFile.value
     }
+
+    function setCurrentMaterialName(objName: string)
+    {
+        materialName.value = objName
+    }
+
+    function getCurrentMaterialName()
+    {
+        return materialName.value
+    }
     
 
     return {
@@ -95,7 +107,9 @@ const useStatsStore = defineStore('stats', () => {
         setRotation,
         getRotation,
         setCurrentFile,
-        getCurrentFile
+        getCurrentFile,
+        setCurrentMaterialName,
+        getCurrentMaterialName
     }
 });
 
