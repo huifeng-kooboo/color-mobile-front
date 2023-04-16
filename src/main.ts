@@ -10,7 +10,6 @@ import { Swipe, SwipeItem, Icon, Pagination, Locale } from 'vant';
 import enUS from "vant/es/locale/lang/en-US";
 import 'element-plus/theme-chalk/index.css'
 import {ElColorPicker, ElCarousel, ElCarouselItem} from 'element-plus'
-import vcolorpicker from 'vcolorpicker'
 
 import pinia from '@/store/store'
 
@@ -36,7 +35,6 @@ app.use(Grid)
 app.use(GridItem)
 app.use(Field)
 app.use(Uploader)
-app.use(vcolorpicker)
 app.use(ElColorPicker)
 app.use(ElCarousel)
 app.use(ElCarouselItem)

@@ -112,7 +112,7 @@ export default {
             {
                 cur_index = 0
             }
-            getFileFromUrl(file_list[cur_index], function(inputFile){
+            getFileFromUrl(file_list[cur_index], function(inputFile: File){
                 console.log("show model begim")
                 uploadModelFile(inputFile)
                 console.log("show model end")
@@ -122,7 +122,7 @@ export default {
         changePagePopModel(pageNum:number)
         {
             console.log(pageNum)
-            getFileFromUrl(file_list[pageNum-1], function(inputFile){
+            getFileFromUrl(file_list[pageNum-1], function(inputFile: File){
                 console.log("show model begim")
                 uploadModelFile(inputFile)
                 console.log("show model end")
