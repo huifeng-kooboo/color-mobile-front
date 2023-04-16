@@ -6,7 +6,8 @@ import router from './router'
 
 // 1. 引入UI组件
 import { Button, Switch, Divider, ConfigProvider,Uploader ,Row, Col, Space, Grid, GridItem, Field} from 'vant'
-import { Swipe, SwipeItem, Icon, Pagination } from 'vant';
+import { Swipe, SwipeItem, Icon, Pagination, Locale } from 'vant';
+import enUS from "vant/es/locale/lang/en-US";
 import 'element-plus/theme-chalk/index.css'
 import {ElColorPicker, ElCarousel, ElCarouselItem} from 'element-plus'
 import vcolorpicker from 'vcolorpicker'
@@ -14,6 +15,8 @@ import vcolorpicker from 'vcolorpicker'
 // 2. 引入组件样式
 import 'vant/lib/index.css'
 import './assets/main.css'
+
+Locale.use('en-US', enUS)
 
 const app = createApp(App)
 
