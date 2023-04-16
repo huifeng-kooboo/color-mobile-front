@@ -115,7 +115,7 @@ const serialsNumText = transInfo.isCnState()? ref("序列号") : ref("Serial No"
 
 const materailText = transInfo.isCnState()? ref("材质") : ref("MATERIAL")
 
-const file_list = ["/test.fbx","/test1.fbx", "/test2.fbx", "/test3.fbx"]
+const file_list = ["/test.fbx","/test1.fbx", "/test2.fbx", "/test3.fbx", "/test4.fbx", "/test5.fbx"]
 const currentPage = ref(3)
 const showPageText = ref("test")
 const dict_res = ["bomo", "方型瓶子","盖子","罐子","软管","圆型瓶子"]
@@ -161,7 +161,7 @@ export default {
         changePagePopModel(pageNum:number)
         {
             console.log(pageNum)
-            getFileFromUrl(file_list[pageNum-1], function(inputFile: File){
+            getFileFromUrl(file_list[pageNum], function(inputFile: File){
                 console.log("show model begim")
                 uploadModelFile(inputFile)
                 console.log("show model end")

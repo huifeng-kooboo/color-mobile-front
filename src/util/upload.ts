@@ -63,10 +63,6 @@ function uploadModelFile( file: File, mainColor="#df7920" ) {
                 console.log("隐藏", child.name)
                 child.visible = false
             }
-
-            // if (child.name === 'wall') {
-            //   child.visible = false
-            // }
           })
         onModelLoaded( model, loader.getRotation(), mainColor );
         statsStore.setCurrentModel(model);

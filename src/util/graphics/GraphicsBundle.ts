@@ -40,7 +40,7 @@ const renderer = new WebGLRenderer({
     antialias: true
 });
 
-function onModelLoaded( model: Object3D, rotation: Rotation , mainColor="#409EFF", materialName="phong") {
+function onModelLoaded( model: Object3D, rotation: Rotation , mainColor="#409EFF", materialName="123") {
 
     PROTON_SCENE = new Scene();
     PROTON_SCENE.background = null;
