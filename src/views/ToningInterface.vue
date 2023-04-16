@@ -40,7 +40,7 @@ import { useStatsStore } from '@/store/stats';
     <van-row>
         <el-button-group>
             <van-col>
-                <el-button v-for="(item,index) in material_res" type="primary" round style=" margin-left: 10px; margin-top:10px; width: 60px; height: 20px; font-size: 10px;">{{ item }}</el-button>
+                <el-button v-for="(item,index) in material_res" @click="clickMaterialEvent({index})" type="primary" round style=" margin-left: 10px; margin-top:10px; width: 80px; height: 25px; font-size: 10px;">{{ item }}</el-button>
             </van-col>
         </el-button-group> 
     </van-row>
@@ -82,7 +82,7 @@ import * as THREE from 'three'
 for (const key in THREE) {
   if (key.endsWith("Material")) {
     const material = THREE[key];
-    console.log(material.type);
+    console.log(material);
     // );
   }
 }
@@ -100,7 +100,7 @@ const file_list = ["/test.fbx","/test1.fbx", "/test2.fbx", "/test3.fbx"]
 const currentPage = ref(3)
 const showPageText = ref("test")
 const dict_res = ["bomo", "方型瓶子","盖子","罐子","软管","圆型瓶子"]
-const material_res = ["PP罐", "AS.ABS", "PETG","PET", "压克力"]
+const material_res = ["LINEBASIC", "LINEDASH", "PET", "压克力"]
 var cur_index = 0
 const afterRead = (file: File) => {
       // 此时可以自行将文件上传至服务器
@@ -147,6 +147,10 @@ export default {
                 uploadModelFile(inputFile)
                 console.log("show model end")
             })
+        },
+        clickMaterialEvent(index_: number)
+        {
+            console.log("clicked_index: ",index_)
         }
     },
    created() {
