@@ -35,6 +35,11 @@ let PROTON_CAMERA_SPHERE: Mesh;
 const NUM_POINTS_PER_TRIANGLE = 3;
 const ZOOM_ANIMATION_DURATION = 50;
 
+const renderer = new WebGLRenderer({
+    alpha: true,
+    antialias: true
+});
+
 function onModelLoaded( model: Object3D, rotation: Rotation , mainColor="#409EFF", materialName="phong") {
 
     PROTON_SCENE = new Scene();
@@ -51,10 +56,7 @@ function onModelLoaded( model: Object3D, rotation: Rotation , mainColor="#409EFF
     PROTON_SCENE.add( mainLight, spotLight );
 
     PROTON_CAMERA = new PerspectiveCamera( 45, window.innerWidth / ( window.innerHeight - 400 ), 0.1, 1000000 );
-    const renderer = new WebGLRenderer({
-        alpha: true,
-        antialias: true
-    });
+
     renderer.setSize( window.innerWidth, window.innerHeight - 400 );
 
     const controls = new OrbitControls( PROTON_CAMERA, renderer.domElement );
@@ -147,6 +149,7 @@ function onModelLoaded( model: Object3D, rotation: Rotation , mainColor="#409EFF
         PROTON_CAMERA.updateProjectionMatrix();
         renderer.setSize( window.innerWidth, window.innerHeight - 400 );
         renderer.render( PROTON_SCENE, PROTON_CAMERA );
+        useStatsStore().setImageUrl(renderer.domElement.toDataURL())
     }
     resize();
 
@@ -159,7 +162,7 @@ function onModelLoaded( model: Object3D, rotation: Rotation , mainColor="#409EFF
         spotLight.position.copy( lightPos );
 
         renderer.render( PROTON_SCENE, PROTON_CAMERA );
-
+        useStatsStore().setImageUrl(renderer.domElement.toDataURL())
         TWEEN.update();
     }
 

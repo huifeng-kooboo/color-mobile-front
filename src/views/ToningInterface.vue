@@ -155,6 +155,7 @@ export default {
         saveSettingClick()
         {
             console.log("保存相关配置")
+            console.log("下载路径为:", statsInfo.getImageUrl())
         }
     },
    created() {
