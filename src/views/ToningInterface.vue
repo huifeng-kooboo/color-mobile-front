@@ -60,7 +60,7 @@ import { useStatsStore } from '@/store/stats';
 
     <van-row justify="center" class="saverow">
         <van-col>
-            <van-button round type="primary" style="width: 180px;">{{ saveText }}</van-button>
+            <van-button round type="primary" style="width: 180px;" @click="saveSettingClick" >{{ saveText }}</van-button>
         </van-col>
     </van-row>
     <van-row>
@@ -151,6 +151,10 @@ export default {
         clickMaterialEvent(index_: number)
         {
             console.log("clicked_index: ",index_)
+        },
+        saveSettingClick()
+        {
+            console.log("保存相关配置")
         }
     },
    created() {
