@@ -67,6 +67,17 @@ import { useStatsStore } from '@/store/stats';
         <van-divider />
     </van-row>
     <ChoosePage />
+
+    <van-popup v-model:show="isShowPopup" style="width:80%; height:80%; margin-left: 10px; margin-top:10px;">
+        <van-row justify="center">
+            <van-image width="400" height="400" :src="resourceImgUrl" />
+        </van-row>
+        <van-row justify="center">
+            <van-button type="primary" @click="saveImgToLocal">{{ saveText }}</van-button>
+        </van-row>
+
+    </van-popup>
+
   </div>
 </template>
 <style scoped>
@@ -87,6 +98,8 @@ for (const key in THREE) {
   }
 }
 
+const isShowPopup = ref(false)
+const resourceImgUrl = ref("")
 const transInfo = useTranslateStore(pinia)
 const statsInfo = useStatsStore(pinia)
 console.log("dangqianzhuangtai:", transInfo.isCnState())
@@ -156,6 +169,17 @@ export default {
         {
             console.log("保存相关配置")
             console.log("下载路径为:", statsInfo.getImageUrl())
+            isShowPopup.value = true
+            resourceImgUrl.value = statsInfo.getImageUrl()
+        },
+        saveImgToLocal()
+        {
+            // 保存图片到本地
+            console.log("保存到本地")
+            const link = document.createElement('a')
+            link.href =statsInfo.getImageUrl()
+            link.download = 'save.png'
+            link.click()
         }
     },
    created() {
@@ -171,6 +195,7 @@ export default {
         colorText.value = "COLOR";
         materailText.value = "MATERIAL";
       }
+
    }
 }
 </script>

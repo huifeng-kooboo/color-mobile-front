@@ -6,10 +6,11 @@ import router from './router'
 
 // 1. 引入UI组件
 import { Button, Switch, Divider, ConfigProvider,Uploader ,Row, Col, Space, Grid, GridItem, Field} from 'vant'
-import { Swipe, SwipeItem, Icon, Pagination, Locale, Tag } from 'vant';
+import { Swipe, SwipeItem, Icon, Pagination, Locale, Tag, Popup } from 'vant';
 import enUS from "vant/es/locale/lang/en-US";
 
 import {ElColorPicker, ElCarousel, ElCarouselItem, ElButtonGroup, ElButton} from 'element-plus'
+import { Image as VanImage } from 'vant';
 import 'element-plus/theme-chalk/index.css'
 
 import pinia from '@/store/store'
@@ -46,6 +47,8 @@ app.use(Pagination)
 app.use(Tag)
 app.use(ElButton)
 app.use(ElButtonGroup)
+app.use(Popup)
+app.use(VanImage)
 // app.use(Chrome)
 app.use(router).mount('#app')
 
