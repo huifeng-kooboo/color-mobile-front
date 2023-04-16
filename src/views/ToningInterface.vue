@@ -38,7 +38,11 @@ import { useStatsStore } from '@/store/stats';
     </van-row>
 
     <van-row>
-        <li v-for="(item,index) in material_res" style="color: white;"><van-button  type="primary" round style="color: black; background-color: white; margin-top:10px; width: 80px; height: 20px; font-size: 10px;">{{ item }}</van-button></li>
+        <el-button-group>
+            <van-col>
+                <el-button v-for="(item,index) in material_res" type="primary" round style=" margin-left: 10px; margin-top:10px; width: 60px; height: 20px; font-size: 10px;">{{ item }}</el-button>
+            </van-col>
+        </el-button-group> 
     </van-row>
     <van-space  direction="vertical" :size="30">
     </van-space>

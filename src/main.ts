@@ -8,8 +8,9 @@ import router from './router'
 import { Button, Switch, Divider, ConfigProvider,Uploader ,Row, Col, Space, Grid, GridItem, Field} from 'vant'
 import { Swipe, SwipeItem, Icon, Pagination, Locale, Tag } from 'vant';
 import enUS from "vant/es/locale/lang/en-US";
+
+import {ElColorPicker, ElCarousel, ElCarouselItem, ElButtonGroup, ElButton} from 'element-plus'
 import 'element-plus/theme-chalk/index.css'
-import {ElColorPicker, ElCarousel, ElCarouselItem} from 'element-plus'
 
 import pinia from '@/store/store'
 
@@ -43,6 +44,8 @@ app.use(SwipeItem)
 app.use(Icon)
 app.use(Pagination)
 app.use(Tag)
+app.use(ElButton)
+app.use(ElButtonGroup)
 // app.use(Chrome)
 app.use(router).mount('#app')
 
