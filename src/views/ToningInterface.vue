@@ -69,11 +69,14 @@ import { useStatsStore } from '@/store/stats';
     <ChoosePage />
 
     <van-popup v-model:show="isShowPopup" style="width:80%; height:80%; margin-left: 10px; margin-top:10px;">
+        <van-row>
+            <label style="color: black; font-size: 14px; margin-top: 20px; margin-left:20px;">{{ serialsNumText }} : {{ serialID }}</label>
+        </van-row>
         <van-row justify="center">
             <van-image width="400" height="400" :src="resourceImgUrl" />
         </van-row>
         <van-row justify="center">
-            <van-button type="primary" @click="saveImgToLocal">{{ saveText }}</van-button>
+            <van-button type="primary" @click="saveImgToLocal">{{ sendText }}</van-button>
         </van-row>
 
     </van-popup>
@@ -100,12 +103,15 @@ for (const key in THREE) {
 
 const isShowPopup = ref(false)
 const resourceImgUrl = ref("")
+const serialID  = ref("AD5185265")
 const transInfo = useTranslateStore(pinia)
 const statsInfo = useStatsStore(pinia)
 console.log("dangqianzhuangtai:", transInfo.isCnState())
 
 const saveText = transInfo.isCnState()? ref("保存设置") : ref("SAVE")
 const colorText = transInfo.isCnState()? ref("颜色") : ref("COLOR")
+const sendText = transInfo.isCnState()? ref("发送") : ref("SEND")
+const serialsNumText = transInfo.isCnState()? ref("序列号") : ref("Serial No")
 
 const materailText = transInfo.isCnState()? ref("材质") : ref("MATERIAL")
 
@@ -189,11 +195,15 @@ export default {
         saveText.value = "保存设置";
         colorText.value = "颜色";
         materailText.value = "材质";
+        sendText.value = "发送";
+        serialsNumText.value = "序列号";
       }
       else{
         saveText.value = "SAVE";
         colorText.value = "COLOR";
         materailText.value = "MATERIAL";
+        sendText.value = "SEND";
+        serialsNumText.value = "Serial No";
       }
 
    }
