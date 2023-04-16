@@ -54,6 +54,20 @@ function uploadModelFile( file: File, mainColor="#df7920" ) {
     statsStore.setFileSize( file.size );
 
     loader.load( file, (model: Object3D) => {
+         model.traverse((child) => {
+            // 如果对象的名称为“wall”，则将其隐藏
+            console.log("child_name:", child.name)
+            // Line 是墙壁=-=
+            if ( child.name.startsWith("Line"))
+            {
+                console.log("隐藏", child.name)
+                child.visible = false
+            }
+
+            // if (child.name === 'wall') {
+            //   child.visible = false
+            // }
+          })
         onModelLoaded( model, loader.getRotation(), mainColor );
         statsStore.setCurrentModel(model);
         statsStore.setRotation(loader.getRotation())
