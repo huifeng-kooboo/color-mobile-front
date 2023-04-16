@@ -3,6 +3,7 @@ import { InvalidFileExtensionError } from './InvalidFileExtensionError';
 import { onModelLoaded } from './graphics/GraphicsBundle';
 import { useStatsStore } from '../store/stats';
 import type { Object3D } from 'three';
+import * as THREE from 'three'
 
 const VALID_FILE_EXTENSIONS = [
     "obj",
@@ -58,10 +59,13 @@ function uploadModelFile( file: File, mainColor="#df7920" ) {
             // 如果对象的名称为“wall”，则将其隐藏
             console.log("child_name:", child.name)
             // Line 是墙壁=-=
-            if ( child.name.startsWith("Line"))
+            if ( child.name.startsWith("Line") || child.name.startsWith("Text"))
             {
                 console.log("隐藏", child.name)
                 child.visible = false
+            }
+            else{
+                child.applyMatrix4(new THREE.Matrix4().makeScale(10, 10, 10)); // 缩放模型
             }
           })
         onModelLoaded( model, loader.getRotation(), mainColor );
