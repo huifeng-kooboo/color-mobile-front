@@ -61,7 +61,7 @@ export default {
   methods: {
     gotoMainPage(){
       console.log("go to toningInterface")
-      this.$router.push({path: "toningInterface"})  // 进入到主页
+      this.$router.push({path: "toningInterface"})  // 进入到调色页面
     },
     checkTranslate(){
       if(checkLanguage.value == true)
