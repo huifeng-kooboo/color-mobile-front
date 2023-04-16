@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import pinia from '@/store/store';
+import { useTranslateStore } from '@/store/translate';
 </script>
 
 <template>
@@ -48,7 +50,9 @@ import { ref } from 'vue';
 
 <script lang="ts">
 // 国际化
-const checkLanguage = ref(true);
+
+const translateInfo = useTranslateStore(pinia)
+const checkLanguage = ref(translateInfo.isCnState());
 
 const loginText = checkLanguage.value ?ref("快速登录"): ref("quick login");
 const colorText = checkLanguage.value ?ref("开始调色"): ref("Start");
@@ -65,11 +69,13 @@ export default {
         console.log("is checked")
         loginText.value = "快速登录"
         colorText.value = "开始调色"
+        translateInfo.setCnTrans(true);
       }
       else{
         console.log("no checked")
         loginText.value = "Quick Log in"
         colorText.value = "    Start    "
+        translateInfo.setCnTrans(false);
       }
     }
   }

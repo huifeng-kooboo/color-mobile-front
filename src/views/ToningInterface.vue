@@ -3,6 +3,8 @@
 import ChoosePage from '@/components/ChoosePage.vue';
 import { uploadModelFile, modifyModelColor ,getFileFromUrl} from '@/util/upload';
 import { ref } from 'vue';
+import pinia from '@/store/store';
+import { useTranslateStore } from '@/store/translate';
 </script>
 
 <template> 
@@ -30,7 +32,7 @@ import { ref } from 'vue';
     </van-space>
     <van-row>
         <van-col>
-            <label style="color:black">材质</label>
+            <label style="color:black">{{ materailText }}</label>
         </van-col>
     </van-row>
 
@@ -41,7 +43,7 @@ import { ref } from 'vue';
     </van-space>
     <van-row>
         <van-col>
-            <label style="color:black">颜色</label>
+            <label style="color:black">{{ colorText }}</label>
         </van-col>
     </van-row>
     <van-row>
@@ -50,7 +52,7 @@ import { ref } from 'vue';
 
     <van-row justify="center" class="saverow">
         <van-col>
-            <van-button round type="primary" style="width: 180px;">保存设置</van-button>
+            <van-button round type="primary" style="width: 180px;">{{ saveText }}</van-button>
         </van-col>
     </van-row>
     <van-row>
@@ -67,6 +69,14 @@ import { ref } from 'vue';
 
 
 <script lang="ts">
+const transInfo = useTranslateStore(pinia)
+console.log("dangqianzhuangtai:", transInfo.isCnState())
+
+const saveText = transInfo.isCnState()? ref("保存设置") : ref("SAVE")
+const colorText = transInfo.isCnState()? ref("颜色") : ref("COLOR")
+
+const materailText = transInfo.isCnState()? ref("材质") : ref("MATERIAL")
+
 const file_list = ["/test.fbx","/test1.fbx", "/test2.fbx", "/test3.fbx"]
 const currentPage = ref(3)
 const showPageText = ref("test")
@@ -76,7 +86,6 @@ var cur_index = 0
 const afterRead = (file: File) => {
       // 此时可以自行将文件上传至服务器
       console.log(file);
-      
       uploadModelFile(file);
 };
 
@@ -122,6 +131,17 @@ export default {
     },
    created() {
       this.showCurrentModel();
+      if(transInfo.isCnState())
+      {
+        saveText.value = "保存设置";
+        colorText.value = "颜色";
+        materailText.value = "材质";
+      }
+      else{
+        saveText.value = "SAVE";
+        colorText.value = "COLOR";
+        materailText.value = "MATERIAL";
+      }
    }
 }
 </script>

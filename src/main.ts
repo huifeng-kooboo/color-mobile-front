@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import { createPinia } from 'pinia'
+import { createPinia, getActivePinia } from 'pinia'
 
 import App from './App.vue'
 import router from './router'
@@ -12,6 +12,8 @@ import 'element-plus/theme-chalk/index.css'
 import {ElColorPicker, ElCarousel, ElCarouselItem} from 'element-plus'
 import vcolorpicker from 'vcolorpicker'
 
+import pinia from '@/store/store'
+
 // 2. 引入组件样式
 import 'vant/lib/index.css'
 import './assets/main.css'
@@ -19,9 +21,10 @@ import './assets/main.css'
 Locale.use('en-US', enUS)
 
 const app = createApp(App)
-
+app.use(pinia)
+app.use(getActivePinia)
 // 使用这些的控件
-app.use(createPinia())
+// app.use(createPinia())
 app.use(Button)
 app.use(Switch)
 app.use(Divider)
