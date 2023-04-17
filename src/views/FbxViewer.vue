@@ -1,7 +1,6 @@
 <!--fbx文件显示-->
 <script setup lang="ts">
 import vue3dLoader from "@/fbxutils/vue3dLoader.vue";
-import {globalLoader} from "@/fbxutils/loadModel";
 import pinia from "@/store/store";
 import { useTranslateStore } from "@/store/translate";
 </script>
@@ -67,8 +66,6 @@ function onLoadModal()
   console.log("此时加载插件")
 }
 function changeHH(){
-
-  console.log("Props-pp", globalLoader);
   if (object.value) {
     console.log("set color","ss");
     (object.value as any).material.color.setStyle("#ff0000");
@@ -77,7 +74,7 @@ function changeHH(){
   if(allModel != null)
   {
     console.log("hiddd");
-    allModel.traverse((child) => {
+    allModel.traverse((child: any) => {
        child.visible = false
     })
   }

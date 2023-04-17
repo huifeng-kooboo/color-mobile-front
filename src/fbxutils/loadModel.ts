@@ -25,8 +25,6 @@ interface loaderObj {
   getObject?: any;
 }
 
-let globalLoader: loaderObj = null;
-
 // get box size
 function getSize(obj: Object3D) {
   box.setFromObject(obj);
@@ -124,7 +122,6 @@ function getLoader(filePath: string, fileType: string, isDraco: boolean, dracoDi
       };
       break;
   }
-  globalLoader = obj;
   return obj;
 }
 
@@ -148,5 +145,4 @@ export {
   getCenter,
   getLoader,
   getMTLLoader,
-  globalLoader
 }
