@@ -75,8 +75,13 @@ import { useStatsStore } from '@/store/stats';
         <van-row justify="center">
             <van-image width="400" height="400" :src="resourceImgUrl" />
         </van-row>
+        
         <van-row justify="center">
-            <van-button type="primary" @click="saveImgToLocal">{{ sendText }}</van-button>
+            <label style="color: black; font-size: 14px; margin-top: 20px;"> {{ dict_res[currentPage] }} {{ color }} </label>
+        </van-row>
+
+        <van-row justify="center">
+            <van-button type="primary" round style="width:200px; height: 30px;" @click="saveImgToLocal">{{ sendText }}</van-button>
         </van-row>
 
     </van-popup>
@@ -118,6 +123,7 @@ const materailText = transInfo.isCnState()? ref("材质") : ref("MATERIAL")
 const file_list = ["/test.fbx","/test1.fbx", "/test2.fbx", "/test3.fbx", "/test4.fbx", "/test5.fbx"]
 const currentPage = ref(3)
 const dict_res = ["bomo", "方型瓶子","盖子","罐子","软管","圆型瓶子"]
+const materailValue = ref("序列号")
 
 
 const show_box_res = {
@@ -183,6 +189,7 @@ export default {
             console.log("clicked_index: ",index_)
             console.log("current_res:", material_res.value)
             var mm_achieve = material_res.value
+            materailValue.value = mm_achieve[index_]
             console.log("acheve info", mm_achieve[index_])
         },
         saveSettingClick()
