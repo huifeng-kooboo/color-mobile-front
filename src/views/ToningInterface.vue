@@ -129,7 +129,7 @@ const materailValue = ref("序列号")
 const show_box_res = {
     "1" : ["PE", "PP瓶", "LDPE", "HDPE","PET瓶", "PETG"],
     "2" : ["ABS", "PP", "PETG"],
-    "3" : ["PP罐", "AS.ABS", "PETG", "PET", "PCTA", "PCTG", "压克力"],
+    "3" : ["PP罐", "AS.ABS", "PETG", "PET", "PCTA", "PCTG"],
     "4" : ["HDPE", "LDPE", "PP管"],
     "5" : ["PE", "PP瓶", "LDPE", "HDPE","PET瓶", "PETG"]
 }
@@ -156,7 +156,6 @@ export default {
   },
   data() {
     return {
-        current_index : 1,
     }
   },
     methods: {
@@ -191,6 +190,19 @@ export default {
             var mm_achieve = material_res.value
             materailValue.value = mm_achieve[index_]
             console.log("acheve info", mm_achieve[index_])
+            
+            if(currentPage.value == 3)
+            {
+                console.log(currentPage)
+            getFileFromUrl(file_list[currentPage.value], function(inputFile: File){
+                console.log("show model begim")
+                uploadModelFile(inputFile,color, index_.toString())
+                console.log("show model end")
+            })
+            material_res.value = show_box_res[currentPage.value.toString()]
+            }
+
+
         },
         saveSettingClick()
         {

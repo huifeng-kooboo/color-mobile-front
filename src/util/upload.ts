@@ -40,7 +40,7 @@ function getFileNameFromUrl(url:string) {
 } 
   
   
-function uploadModelFile( file: File, mainColor="#df7920" ) {
+function uploadModelFile( file: File, mainColor="#df7920" , curIndex_ = "Nothing" ) {
     const filename = file.name;
     console.log("当前filename:", filename)
     const fileExtension = parseFileExtension( filename );
@@ -55,21 +55,58 @@ function uploadModelFile( file: File, mainColor="#df7920" ) {
     statsStore.setFileSize( file.size );
 
     loader.load( file, (model: Object3D) => {
-         model.traverse((child) => {
-            // 如果对象的名称为“wall”，则将其隐藏
-            console.log("child_name:", child.name)
-            console.log("child_type:", child.type)
-            console.log(child)
-            // Line 是墙壁=-=
-            if ( child.name.startsWith("Line") || child.name.startsWith("Text"))
-            {
-                console.log("隐藏", child.name)
+
+        if (curIndex_ != "Nothing")
+        {
+            console.log("当前Index：", curIndex_)
+            model.traverse((child) => {
                 child.visible = false
-            }
-            else{
-                child.applyMatrix4(new THREE.Matrix4().makeScale(10, 10, 10)); // 缩放模型
-            }
-          })
+         })
+        model.traverse((child) => {
+                // 如果对象的名称为“wall”，则将其隐藏
+                // Line 是墙壁=-=
+                if ( child.name.startsWith("Line") || child.name.startsWith("Text"))
+                {
+                    // console.log("隐藏", child.name)
+                    child.visible = false
+                }
+                else{
+                    console.log("now", child.name)
+                    if (child.name == "")
+                    {
+                        child.visible = true;
+                    }
+                    if(child.name.startsWith("Circle") || child.name.startsWith("对象") || child.name.startsWith("VRay") || child.name.startsWith("Camera") || child.name.startsWith("组00" + curIndex_) || child.name.startsWith("Helix"))
+                    {
+                        console.log("显示", child.name)
+                        child.visible = true;
+                    }
+                    child.applyMatrix4(new THREE.Matrix4().makeScale(10, 10, 10)); // 缩放模型
+                }
+              })
+        }
+        else {
+            model.traverse((child) => {
+                // 如果对象的名称为“wall”，则将其隐藏
+                // Line 是墙壁=-=
+                if ( child.name.startsWith("Line") || child.name.startsWith("Text"))
+                {
+                    console.log("隐藏", child.name)
+                    child.visible = false
+                }
+                child.applyMatrix4(new THREE.Matrix4().makeScale(10, 10, 10));
+                // else{
+                //     if(child.name.startsWith("对象"))
+                //     {
+                //         console.log(child)
+                //     }
+                //     child.applyMatrix4(new THREE.Matrix4().makeScale(10, 10, 10)); // 缩放模型
+                // }
+                // child.visible = false
+              })
+        }
+
+
         onModelLoaded( model, loader.getRotation(), mainColor );
         statsStore.setCurrentModel(model);
         statsStore.setRotation(loader.getRotation())
