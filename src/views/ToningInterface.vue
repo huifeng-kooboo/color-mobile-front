@@ -117,9 +117,19 @@ const materailText = transInfo.isCnState()? ref("材质") : ref("MATERIAL")
 
 const file_list = ["/test.fbx","/test1.fbx", "/test2.fbx", "/test3.fbx", "/test4.fbx", "/test5.fbx"]
 const currentPage = ref(3)
-const showPageText = ref("test")
 const dict_res = ["bomo", "方型瓶子","盖子","罐子","软管","圆型瓶子"]
-const material_res = ["LINEBASIC", "LINEDASH", "PET", "压克力"]
+
+
+const show_box_res = {
+    "1" : ["PE", "PP瓶", "LDPE", "HDPE","PET瓶", "PETG"],
+    "2" : ["ABS", "PP", "PETG"],
+    "3" : ["PP罐", "AS.ABS", "PETG", "PET", "PCTA", "PCTG", "压克力"],
+    "4" : ["HDPE", "LDPE", "PP管"],
+    "5" : ["PE", "PP瓶", "LDPE", "HDPE","PET瓶", "PETG"]
+}
+
+const material_res = ref(show_box_res["3"])
+
 var cur_index = 0
 const afterRead = (file: File) => {
       // 此时可以自行将文件上传至服务器
@@ -166,6 +176,7 @@ export default {
                 uploadModelFile(inputFile)
                 console.log("show model end")
             })
+            material_res.value = show_box_res[pageNum.toString()]
         },
         clickMaterialEvent(index_: number)
         {

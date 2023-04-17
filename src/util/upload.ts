@@ -58,6 +58,8 @@ function uploadModelFile( file: File, mainColor="#df7920" ) {
          model.traverse((child) => {
             // 如果对象的名称为“wall”，则将其隐藏
             console.log("child_name:", child.name)
+            console.log("child_type:", child.type)
+            console.log(child)
             // Line 是墙壁=-=
             if ( child.name.startsWith("Line") || child.name.startsWith("Text"))
             {

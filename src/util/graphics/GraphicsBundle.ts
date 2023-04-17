@@ -79,7 +79,7 @@ function onModelLoaded( model: Object3D, rotation: Rotation , mainColor="#409EFF
     updatedModelBox.getBoundingSphere( PROTON_MODEL_BOUNDING_SPHERE );
 
     const refDistance = 1.65 * PROTON_MODEL_BOUNDING_SPHERE.radius;
-
+    console.log("refDistance:", refDistance)
     PROTON_CAMERA.position.set(
         refDistance,
         refDistance,
