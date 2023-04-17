@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// import LoginPage from './views/LoginPage.vue'
 import { RouterView } from 'vue-router';
 import { ref } from 'vue';
 </script>
@@ -7,7 +6,6 @@ import { ref } from 'vue';
 <template>
   <div class="mainPage">
     <RouterView />
-    <!-- <LoginPage /> -->
   </div>
 
 </template>

@@ -5,7 +5,9 @@ import { ref } from "vue";
 const useTranslateStore = defineStore('translateInfo', () => {
     const isCn = ref(true);
     const currentModal = ref(null);
+    const currentTabIndex = ref(0);
 
+    // 中英文翻译
     function setCnTrans( isok: boolean)
     {
         isCn.value = isok;
@@ -16,6 +18,8 @@ const useTranslateStore = defineStore('translateInfo', () => {
         return isCn.value
     }
 
+
+    // 保存模型
     function setCurrentModal(objModal: any)
     {
         currentModal.value = objModal;
@@ -26,12 +30,27 @@ const useTranslateStore = defineStore('translateInfo', () => {
         return currentModal.value
     }
 
+    // 保存标签选项Index
+    function setCurrentTabIndex(curIndex: number)
+    {
+        currentTabIndex.value = curIndex;
+    }
+
+    function getCurrentTabIndex()
+    {
+        return currentTabIndex.value;
+    }
+
+    
+
     // expose to out
     return {
         setCnTrans,
         isCnState,
         setCurrentModal,
-        getCurrentModal
+        getCurrentModal,
+        setCurrentTabIndex,
+        getCurrentTabIndex
     }
 });
 
