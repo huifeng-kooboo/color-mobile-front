@@ -4,10 +4,11 @@ import MainPage from '../views/MainPage.vue'
 import LoginPage from '@/views/LoginPage.vue'
 import ToningInterface from '@/views/ToningInterface.vue'
 import PersonalCenter from '@/views/PersonalCenter.vue'
+import FbxViewer from '@/views/FbxViewer.vue'
 
 const router = createRouter({
-  // history: createWebHistory(import.meta.env.BASE_URL),
-  history:  createWebHistory('/'),
+  history: createWebHistory(import.meta.env.BASE_URL),
+   //history:  createWebHistory('/'),
   routes: [
     {
       path: '/home',
@@ -39,6 +40,10 @@ const router = createRouter({
       path: '/personalCenter',
       name: 'personalCenter',
       component: PersonalCenter
+    }, {
+      path: '/fbxViewer',
+      name: 'fbxViewer',
+      component: FbxViewer
     }
   ]
 })

@@ -4,6 +4,7 @@ import { ref } from "vue";
 
 const useTranslateStore = defineStore('translateInfo', () => {
     const isCn = ref(true);
+    const currentModal = ref(null);
 
     function setCnTrans( isok: boolean)
     {
@@ -15,10 +16,22 @@ const useTranslateStore = defineStore('translateInfo', () => {
         return isCn.value
     }
 
+    function setCurrentModal(objModal: any)
+    {
+        currentModal.value = objModal;
+    }
+    
+    function getCurrentModal()
+    {
+        return currentModal.value
+    }
+
     // expose to out
     return {
         setCnTrans,
-        isCnState
+        isCnState,
+        setCurrentModal,
+        getCurrentModal
     }
 });
 

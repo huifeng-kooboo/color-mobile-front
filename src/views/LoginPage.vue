@@ -6,24 +6,33 @@ import { useTranslateStore } from '@/store/translate';
 
 <template>
   <div class="wrapper">
+
+    <!--中英翻译按钮-->
     <van-row justify="end">
       <van-col span="6"><van-switch v-model="checkLanguage" class="switch_language" @click="checkTranslate" /></van-col>
     </van-row>
     <van-space  direction="vertical" :size="150"></van-space>
+
+    <!--公司主页Logo-->
     <van-row justify="center">
       <van-col ><img alt="Vue logo" class="logo wechatLogin" src="@/assets/login/logo.jpg" width="300"
           height="300" /></van-col>
     </van-row>
     <van-space  direction="vertical" :size="300">
     </van-space>
+    
+    <!-- 开始调色按钮 -->
     <van-row justify="center">
       <van-col span="8"><van-button type="primary" @click="gotoMainPage()" style="width:130px" round class="beginColorModify">{{ colorText }}</van-button></van-col>
     </van-row>
+
     <van-space  direction="vertical" :size="220">
     </van-space>
 
+    <!--快速登录分割线-->
     <van-divider class="quickLogin">{{ loginText }}</van-divider>
-    <!--三个登录按钮的图标-->
+
+    <!--微信、微博、QQ登录按钮-->
     <van-row justify="center" gutter="20">
       <van-col span="4">
         <img alt="Vue logo" class="logo wechatLogin" src="@/assets/login/wechatLogin.svg" width="30"
@@ -38,10 +47,15 @@ import { useTranslateStore } from '@/store/translate';
       height="30" />
      </van-col>
     </van-row>
+
     <van-space  direction="vertical" :size="220">
     </van-space>
+
+    <!-- 公司地址 -->
     <van-row justify="center">
       <h5 style="color:black">上海鑫亮塑胶制品股份有限公司</h5>
+    </van-row>
+    <van-row justify="center">
       <h5 style="color: black;">shanghai xinliang plastic products,Co.ltd</h5>
     </van-row>
 
@@ -49,8 +63,6 @@ import { useTranslateStore } from '@/store/translate';
 </template>
 
 <script lang="ts">
-// 国际化
-
 const translateInfo = useTranslateStore(pinia)
 const checkLanguage = ref(translateInfo.isCnState());
 
@@ -60,19 +72,17 @@ const colorText = checkLanguage.value ?ref("开始调色"): ref("Start");
 export default {
   methods: {
     gotoMainPage(){
-      console.log("go to toningInterface")
-      this.$router.push({path: "toningInterface"})  // 进入到调色页面
+      console.log("进入调色页面")
+      this.$router.push({path: "fbxViewer"})  // 进入到调色页面
     },
     checkTranslate(){
       if(checkLanguage.value == true)
       {
-        console.log("is checked")
         loginText.value = "快速登录"
         colorText.value = "开始调色"
         translateInfo.setCnTrans(true);
       }
       else{
-        console.log("no checked")
         loginText.value = "Quick Log in"
         colorText.value = "    Start    "
         translateInfo.setCnTrans(false);
