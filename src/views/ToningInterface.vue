@@ -181,6 +181,9 @@ export default {
         clickMaterialEvent(index_: number)
         {
             console.log("clicked_index: ",index_)
+            console.log("current_res:", material_res.value)
+            var mm_achieve = material_res.value
+            console.log("acheve info", mm_achieve[index_])
         },
         saveSettingClick()
         {
