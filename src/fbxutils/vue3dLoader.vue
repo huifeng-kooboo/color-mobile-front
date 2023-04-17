@@ -34,7 +34,6 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import Stats from "three/examples/jsm/libs/stats.module";
 import { getSize, getCenter, getLoader, getMTLLoader } from "./loadModel";
 import {
-  defineProps,
   onMounted,
   ref,
   withDefaults,

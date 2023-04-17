@@ -23,7 +23,7 @@ import { useTranslateStore } from '@/store/translate';
     
     <!-- 开始调色按钮 -->
     <van-row justify="center">
-      <van-col span="8"><van-button type="primary" @click="gotoMainPage()" style="width:130px" round class="beginColorModify">{{ colorText }}</van-button></van-col>
+      <van-col span="8"><van-button type="primary" @click="gotoFbxViewer()" style="width:130px" round class="beginColorModify">{{ colorText }}</van-button></van-col>
     </van-row>
 
     <van-space  direction="vertical" :size="220">
@@ -71,7 +71,7 @@ const colorText = checkLanguage.value ?ref("开始调色"): ref("Start");
 
 export default {
   methods: {
-    gotoMainPage(){
+    gotoFbxViewer(){
       console.log("进入调色页面")
       this.$router.push({path: "fbxViewer"})  // 进入到调色页面
     },
