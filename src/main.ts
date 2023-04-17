@@ -9,7 +9,10 @@ import { Button, Switch, Divider, ConfigProvider,Uploader ,Row, Col, Space, Grid
 import { Swipe, SwipeItem, Icon, Pagination, Locale, Tag, Popup, Tab, Tabs } from 'vant';
 import { Image as VanImage } from 'vant';
 import {ElColorPicker, ElCarousel, ElCarouselItem, ElButtonGroup, ElButton} from 'element-plus'
-
+// color 控件
+// import VueColor from "@lk77/vue3-color";
+import Vue3ColorPicker from "vue3-colorpicker";
+import "vue3-colorpicker/style.css";
 // 2. 引入组件样式
 import 'element-plus/theme-chalk/index.css'
 import 'vant/lib/index.css'
@@ -48,4 +51,5 @@ app.use(Popup)
 app.use(VanImage)
 app.use(Tabs)
 app.use(Tab)
+app.use(Vue3ColorPicker)
 app.use(router).mount('#app')
