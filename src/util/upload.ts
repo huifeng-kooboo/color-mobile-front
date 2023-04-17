@@ -40,7 +40,7 @@ function getFileNameFromUrl(url:string) {
 } 
   
   
-function uploadModelFile( file: File, mainColor="#df7920" , curIndex_ = "Nothing" ) {
+function uploadModelFile( file: File, mainColor="#df7920" , curIndex_ = 12580 ) {
     const filename = file.name;
     console.log("当前filename:", filename)
     const fileExtension = parseFileExtension( filename );
@@ -56,9 +56,13 @@ function uploadModelFile( file: File, mainColor="#df7920" , curIndex_ = "Nothing
 
     loader.load( file, (model: Object3D) => {
 
-        if (curIndex_ != "Nothing")
+        if (curIndex_ != 12580)
         {
             console.log("当前Index：", curIndex_)
+            const strIndex = (curIndex_ as string)
+//strIndex
+            const strjj = "组005"
+            console.log("strrr:", strjj)
             model.traverse((child) => {
                 child.visible = false
          })
@@ -76,7 +80,7 @@ function uploadModelFile( file: File, mainColor="#df7920" , curIndex_ = "Nothing
                     {
                         child.visible = true;
                     }
-                    if(child.name.startsWith("Circle") || child.name.startsWith("对象") || child.name.startsWith("VRay") || child.name.startsWith("Camera") || child.name.startsWith("组00" + curIndex_) || child.name.startsWith("Helix"))
+                    if(child.name.startsWith("Circle") || child.name.startsWith("对象") || child.name.startsWith("VRay") || child.name.startsWith("Camera") || child.name.startsWith(strjj) || child.name.startsWith("Helix"))
                     {
                         console.log("显示", child.name)
                         child.visible = true;

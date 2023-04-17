@@ -193,10 +193,10 @@ export default {
             
             if(currentPage.value == 3)
             {
-                console.log(currentPage)
+                console.log("当前的page:", currentPage.value)
             getFileFromUrl(file_list[currentPage.value], function(inputFile: File){
                 console.log("show model begim")
-                uploadModelFile(inputFile,color, index_.toString())
+                uploadModelFile(inputFile,color.value, index_)
                 console.log("show model end")
             })
             material_res.value = show_box_res[currentPage.value.toString()]
