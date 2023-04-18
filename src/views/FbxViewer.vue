@@ -3,7 +3,7 @@
 import vue3dLoader from "@/fbxutils/vue3dLoader.vue";
 import pinia from "@/store/store";
 import { useTranslateStore } from "@/store/translate";
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { getCurrentInstance, onMounted } from "vue"
 import ChoosePage from '@/components/ChoosePage.vue';
 </script>
@@ -48,11 +48,11 @@ import ChoosePage from '@/components/ChoosePage.vue';
   </van-row>
 
   <van-row justify="center" style="margin-top: 10px; ">
-    <color-picker v-model:pureColor="pureColor" v-model:gradientColor="gradientColor"  @click="colorChange" isWidget="true" pickerType="chrome"/>
+    <color-picker v-model:pureColor="pureColor" v-model:gradientColor="gradientColor"  :pureColorChange="colorChange"  pickerType="chrome"/>
   </van-row>
 
   <van-row justify="center">
-    <van-button type="primary" style="margin-top: 10px; font-size: 12px; width: 130px; height: 30px;" round > 保存设置 </van-button>
+    <van-button type="primary" style="margin-top: 10px; font-size: 12px; width: 130px; height: 30px; margin-bottom: 10px;" round  > 保存设置 </van-button>
   </van-row>
 
   <ChoosePage />
@@ -65,12 +65,12 @@ const gradientColor = ref("linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0,
 
 const translateInfo = useTranslateStore(pinia)
 
+const widgetShow = ref(true)
+
 // 中英部分
 const materialText = ref("材质")
 const colorText = ref("颜色")
 
-// 选中的颜色
-const chooseColor = ref("#194D33A8")
 
 // 当前选中的Num
 const bagActiveNum = ref(translateInfo.getCurrentTabIndex()); // 从配置读取
@@ -126,38 +126,40 @@ function onLoadModel()
 
 function colorChange()
 {
+  console.log("color__",pureColor);
   console.log("颜色发生改变", pureColor.value);
 }
 
-// function changeHH(){
-//   // todo: delete Later
-//   // if (object.value) {
-//   //   console.log("set color","ss");
-//   //   (object.value as any).material.color.setStyle("#ff0000");
-//   // }
-//   // console.log("test--hide");
-//   // if(allModel != null)
-//   // {
-//   //   console.log("hiddd");
-//   //   allModel.traverse((child: any) => {
-//   //      child.visible = false
-//   //   })
-//   // }
-// }
-
-export default {
-    created() {
-      bagActiveNum.value = translateInfo.getCurrentTabIndex(); // 从配置读取
-      materialText.value = translateInfo.isCnState()? "材质" : "MATERIAL";
-      colorText.value = translateInfo.isCnState()? "颜色" : "COLOR";
-    },
-    watch: {
-       "pureColor"(newVal, oldVal) {
-          console.log(`新值：${newVal}`);
-          console.log(`旧值：${oldVal}`);
-          console.log("hellow  world");
-      }
-    }
+function colorChange2(dcorlo: any)
+{
+  console.log("colorChange2__",dcorlo);
+  console.log("colorChange2颜色发生改变", pureColor.value);
 }
+
+watch(pureColor,(newValue, oldValue)=>{
+  console.log("新值是"+newValue, "旧址是"+oldValue);
+  const myModel = translateInfo.getCurrentModal()
+  if (myModel != null)
+  {
+    console.log("hiddd");
+    myModel.traverse((child: any) => {
+      if(child.isMesh)
+      {
+        child.material.color.setStyle(newValue)
+      }
+
+    })
+  }
+})
+// export default {
+//     created() {
+//       bagActiveNum.value = translateInfo.getCurrentTabIndex(); // 从配置读取
+//       materialText.value = translateInfo.isCnState()? "材质" : "MATERIAL";
+//       colorText.value = translateInfo.isCnState()? "颜色" : "COLOR";
+//     }
+//     watch(pureColor.valueOf(), (newValue, oldValue) =>{
+
+//     }), 
+// }
 
 </script>
