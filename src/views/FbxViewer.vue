@@ -77,14 +77,14 @@ lights.value = [
   {
     type: "PointLight",
     color: "white",
-    position: { x: 200, y: -200, z: 0 },
+    position: { x: 200, y: 200, z: 0 },
     intensity: 1,
   },
   {
     type: "HemisphereLight",
     skyColor: "white",
     groundColor: "#000000",
-    position: { x: 200, y: -200, z: 100 },
+    position: { x: 200, y: 200, z: 100 },
   },
 ];
 
