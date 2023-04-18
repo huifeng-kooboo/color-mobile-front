@@ -21,9 +21,10 @@ import ChoosePage from '@/components/ChoosePage.vue';
   <van-row justify="center">
     <vue3dLoader
     ref="model"
-    :height="300"
+    :height="400"
     :width="300"
     :showFps="false"
+    :lights="lights"
     :filePath="filePath"
     :intersectRecursive="recurResult"
     backgroundColor="#ffffff"
@@ -40,7 +41,7 @@ import ChoosePage from '@/components/ChoosePage.vue';
   </van-row>
   
   <van-row style="margin-top: 5px; " justify="center">
-    <van-button v-for="(item, index) in bagMaterialRelation[bagActiveNum.valueOf()]" plain type="primary" round style="width: 80px; height: 24px; color: #878787; border-color: #878787; font-size: 12px; margin-right: 10px; margin-bottom: 10px;"> {{ item }}</van-button>  
+    <el-button v-for="(item, index) in bagMaterialRelation[bagActiveNum.valueOf()]" plain type="primary" round style="width: 80px; height: 24px; color: #878787; border-color: #878787; font-size: 12px; margin-right: 10px; margin-bottom: 10px;"> {{ item }}</el-button>  
   </van-row>
 
   <!-- 颜色部分 -->
@@ -61,6 +62,32 @@ import ChoosePage from '@/components/ChoosePage.vue';
 </template>
 <script lang="ts">
 
+const lights = ref();
+lights.value = [
+  {
+    type: "AmbientLight",
+    color: "white",
+  },
+  {
+    type: "DirectionalLight",
+    position: { x: 100, y: 10, z: 100 },
+    color: "white",
+    intensity: 0.8,
+  },
+  {
+    type: "PointLight",
+    color: "white",
+    position: { x: 200, y: -200, z: 0 },
+    intensity: 1,
+  },
+  {
+    type: "HemisphereLight",
+    skyColor: "white",
+    groundColor: "#000000",
+    position: { x: 200, y: -200, z: 100 },
+  },
+];
+
  const pureColor = ref("#ff0000")
 const gradientColor = ref("linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 100%)");
 
@@ -73,7 +100,7 @@ const materialText = ref("材质")
 const colorText = ref("颜色")
 
 const position = ref();
-position.value = { x: -80, y: 50,  z: -20 };
+position.value = { x:-100, y: 0,  z: 100 };
 
 // 当前选中的Num
 const bagActiveNum = ref(translateInfo.getCurrentTabIndex()); // 从配置读取
