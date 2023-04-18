@@ -30,6 +30,7 @@ import ChoosePage from '@/components/ChoosePage.vue';
     @click="onClickLoader"
     @load="onLoadModel"
     @sendmodel="onGetModel"
+    :position="position"
   ></vue3dLoader>
   </van-row>
 
@@ -48,7 +49,7 @@ import ChoosePage from '@/components/ChoosePage.vue';
   </van-row>
 
   <van-row justify="center" style="margin-top: 10px; ">
-    <color-picker v-model:pureColor="pureColor" v-model:gradientColor="gradientColor"  :pureColorChange="colorChange"  pickerType="chrome"/>
+    <color-picker v-model:pureColor="pureColor" v-model:gradientColor="gradientColor"  :pureColorChange="colorChange" :isWidget="widgetShow" pickerType="chrome"/>
   </van-row>
 
   <van-row justify="center">
@@ -71,6 +72,8 @@ const widgetShow = ref(true)
 const materialText = ref("材质")
 const colorText = ref("颜色")
 
+const position = ref();
+position.value = { x: -80, y: 50,  z: -20 };
 
 // 当前选中的Num
 const bagActiveNum = ref(translateInfo.getCurrentTabIndex()); // 从配置读取
