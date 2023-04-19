@@ -5,7 +5,7 @@ import { ref } from "vue";
 const useTranslateStore = defineStore('translateInfo', () => {
     const isCn = ref(true);
     const currentModal = ref(null);
-    const currentTabIndex = ref(3);
+    const currentTabIndex = ref(4);
 
     // 中英文翻译
     function setCnTrans( isok: boolean)

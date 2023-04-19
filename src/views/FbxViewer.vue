@@ -21,8 +21,10 @@ import ChoosePage from '@/components/ChoosePage.vue';
   <van-row justify="center">
     <vue3dLoader
     ref="model"
+    :rotaion="rotation"
     :height="400"
     :width="300"
+    :scale="scale"
     :showFps="false"
     :lights="lights"
     :filePath="filePath"
@@ -54,13 +56,23 @@ import ChoosePage from '@/components/ChoosePage.vue';
   </van-row>
 
   <van-row justify="center">
-    <van-button type="primary" style="margin-top: 10px; font-size: 12px; width: 130px; height: 30px; margin-bottom: 10px;" round  > 保存设置 </van-button>
+    <van-button type="primary" style="margin-top: 10px; font-size: 12px; width: 130px; height: 30px; margin-bottom: 10px;" round  @click="onSaveSetting"> 保存设置 </van-button>
   </van-row>
 
   <ChoosePage />
   <!-- <van-button type="primary" @click="changeHH"> 点击</van-button>> -->
 </template>
 <script lang="ts">
+
+const rotation = ref();
+rotation.value = {
+  x: 0,
+  y:  0,
+  z: Math.PI,
+};
+
+const scale = ref();
+scale.value = { x: 0.7, y: 0.7, z: 0.7 };
 
 const lights = ref();
 lights.value = [
@@ -100,7 +112,7 @@ const materialText = ref("材质")
 const colorText = ref("颜色")
 
 const position = ref();
-position.value = { x:-100, y: 0,  z: 100 };
+position.value = { x:0, y: -100,  z: 0 };
 
 // 当前选中的Num
 const bagActiveNum = ref(translateInfo.getCurrentTabIndex()); // 从配置读取
@@ -111,10 +123,22 @@ const bagMaterialRelation = [ ["EVA膜","HDPE","CDPE","PP膜"], ["PE","PP瓶","L
 
 // 配置文件
 // const object = ref(null);
-const filePath = ref("/group.fbx")
+const filePath = ref("/assets/软管.fbx")
 const recurResult = true
 
 let allModel:any = translateInfo.getCurrentModal()
+
+function onSaveSetting()
+{
+  const myModel = translateInfo.getCurrentModal()
+  if (myModel != null)
+  {
+    console.log(myModel)
+  }
+  console.log("当前角度:", rotation.value)
+  console.log("scale", scale.value)
+  console.log("pos", position.value)
+}
 
 // 点击Tab触发
 function onClickBagTab(bagInfo : any)
@@ -127,17 +151,6 @@ function onClickBagTab(bagInfo : any)
 
 function onClickLoader(event: MouseEvent, intersected: any) {
   console.log("[DEBUG_INFO] click the loader")
-// console.log('event', event);
-// console.log(object)
-//  if (object.value) {
-//     console.log("set color","ss");
-//     (object.value as any).material.color.setStyle("#13ce66");
-//   }
-//   if (intersected) {
-//     object.value = intersected.object;
-//     console.log("value:",object.value);
-//     (object.value as any).material.color.setStyle("#13ce66");
-//   }
 }
 
 function onGetModel(objModel:any)
@@ -181,15 +194,5 @@ watch(pureColor,(newValue, oldValue)=>{
     })
   }
 })
-// export default {
-//     created() {
-//       bagActiveNum.value = translateInfo.getCurrentTabIndex(); // 从配置读取
-//       materialText.value = translateInfo.isCnState()? "材质" : "MATERIAL";
-//       colorText.value = translateInfo.isCnState()? "颜色" : "COLOR";
-//     }
-//     watch(pureColor.valueOf(), (newValue, oldValue) =>{
-
-//     }), 
-// }
 
 </script>
