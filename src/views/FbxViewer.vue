@@ -21,7 +21,7 @@ import ChoosePage from '@/components/ChoosePage.vue';
   <van-row justify="center">
     <vue3dLoader
     ref="model"
-    :rotaion="rotation"
+    :rotation="rotation"
     :height="400"
     :width="300"
     :scale="scale"
@@ -66,13 +66,13 @@ import ChoosePage from '@/components/ChoosePage.vue';
 
 const rotation = ref();
 rotation.value = {
-  x: 0,
-  y:  0,
-  z: Math.PI,
+  x: Math.PI /2,
+  y:  Math.PI,
+  z: 0,
 };
 
 const scale = ref();
-scale.value = { x: 0.7, y: 0.7, z: 0.7 };
+scale.value = { x: 0.9, y: 0.9, z: 0.9 };
 
 const lights = ref();
 lights.value = [
@@ -112,7 +112,7 @@ const materialText = ref("材质")
 const colorText = ref("颜色")
 
 const position = ref();
-position.value = { x:0, y: -100,  z: 0 };
+position.value = { x:0, y: -50,  z: 0 };
 
 // 当前选中的Num
 const bagActiveNum = ref(translateInfo.getCurrentTabIndex()); // 从配置读取
