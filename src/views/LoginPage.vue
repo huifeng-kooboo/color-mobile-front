@@ -2,6 +2,8 @@
 import { ref } from 'vue';
 import pinia from '@/store/store';
 import { useTranslateStore } from '@/store/translate';
+import { uploadFileApi } from '@/api/service/upload';
+import { Toast } from 'vant';
 </script>
 
 <template>
@@ -62,6 +64,9 @@ export default {
     updateFile() {
       console.log("上传文件")
       console.log(fileList)
+      uploadFileApi({
+        "files": fileList
+      });
     },
     afterRead(file) {
       // if (file.type !== 'image/jpeg') {

@@ -6,7 +6,7 @@ import { createPinia, getActivePinia } from 'pinia'
 
 // 1. 引入UI组件
 import { Button, Switch, Divider, ConfigProvider,Uploader ,Row, Col, Space, Grid, GridItem, Field} from 'vant'
-import { Swipe, SwipeItem, Icon, Pagination, Locale, Tag, Popup, Tab, Tabs } from 'vant';
+import { Swipe, SwipeItem, Icon, Pagination, Locale,Toast, Tag, Popup, Tab, Tabs } from 'vant';
 import { Image as VanImage } from 'vant';
 import {ElColorPicker, ElCarousel, ElCarouselItem, ElButtonGroup, ElButton} from 'element-plus'
 // color 控件
@@ -51,5 +51,6 @@ app.use(Popup)
 app.use(VanImage)
 app.use(Tabs)
 app.use(Tab)
+app.use(Toast)
 app.use(Vue3ColorPicker)
 app.use(router).mount('#app')
