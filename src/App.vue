@@ -11,7 +11,6 @@ import { ref } from 'vue';
 </template>
 
 <script lang="ts">
-const checked = ref(true);
 </script>
 
 <style scoped>
