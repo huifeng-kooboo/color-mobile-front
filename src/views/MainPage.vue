@@ -1,3 +1,4 @@
+<!-- 主页部分 -->
 <script setup lang="ts">
 import { ref } from 'vue';
 import pinia from '@/store/store';
@@ -18,12 +19,10 @@ import { uploadFileApi } from '@/api/service/upload';
     <van-space direction="vertical" :size="400">
     </van-space>
 
-    <!-- 开始调色按钮 -->
     <van-row justify="center">
       <van-col>
         <van-uploader v-model="fileList" :after-read="afterRead">
-          <van-button type="primary" icon="plus" style="width:130px" round
-            class="beginColorModify">{{ chooseText }}
+          <van-button type="primary" icon="plus" style="width:130px" round class="beginColorModify">{{ chooseText }}
           </van-button>
         </van-uploader>
 
@@ -35,9 +34,8 @@ import { uploadFileApi } from '@/api/service/upload';
     <van-space direction="vertical" :size="100">
     </van-space>
     <van-row justify="center">
-      <van-button type="primary"  @click="updateFile()" style="width:130px" round
-            class="beginColorModify">{{ uploadText }}
-        </van-button>
+      <van-button type="primary" @click="updateFile()" style="width:130px" round class="beginColorModify">{{ uploadText }}
+      </van-button>
     </van-row>
 
     <van-space direction="vertical" :size="300">
@@ -61,17 +59,25 @@ const fileList = ref([]);
 export default {
   methods: {
     updateFile() {
-      console.log("上传文件")
-      console.log(fileList.value)
-      uploadFileApi({
-        "oss_file": fileList.value[0]["file"]
-      });
+      if (fileList.value.length < 1) {
+        console.log("【request】error,当前无文件需要上传....")
+        return
+      }
+      else {
+        console.log("【info】upload_file_size: ", fileList.value.length)
+        uploadFileApi({
+          "oss_file": fileList.value[0]["file"]
+        }).then(function (uploadResult: object) {
+          var downloadUrl = uploadResult["data"]["download_url"]
+          console.log("【response】文件上传成功：", uploadResult)
+          console.log("【response】下载链接为:", downloadUrl)
+        }).catch(function (error: string) {
+          console.log("【response】文件上传失败：", error)
+        });
+      }
+
     },
-    afterRead(file) {
-      // if (file.type !== 'image/jpeg') {
-      //   return false;
-      // }
-      console.log("upload file:", file)
+    afterRead(file: File) {
       return true;
     }
   }

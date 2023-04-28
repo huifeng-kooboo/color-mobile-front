@@ -2,10 +2,10 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
 
+// 存储数据
 const useTranslateStore = defineStore('translateInfo', () => {
+    // 中英翻译状态保存【默认中文】
     const isCn = ref(true);
-    const currentModal = ref(null);
-    const currentTabIndex = ref(4);
 
     // 中英文翻译
     function setCnTrans( isok: boolean)
@@ -18,39 +18,10 @@ const useTranslateStore = defineStore('translateInfo', () => {
         return isCn.value
     }
 
-
-    // 保存模型
-    function setCurrentModal(objModal: any)
-    {
-        currentModal.value = objModal;
-    }
-    
-    function getCurrentModal()
-    {
-        return currentModal.value
-    }
-
-    // 保存标签选项Index
-    function setCurrentTabIndex(curIndex: number)
-    {
-        currentTabIndex.value = curIndex;
-    }
-
-    function getCurrentTabIndex()
-    {
-        return currentTabIndex.value;
-    }
-
-    
-
     // expose to out
     return {
         setCnTrans,
         isCnState,
-        setCurrentModal,
-        getCurrentModal,
-        setCurrentTabIndex,
-        getCurrentTabIndex
     }
 });
 
