@@ -20,6 +20,7 @@
     "tinycolor2": "^1.6.0",
     "vant": "^4.1.2",
     "vue": "^3.2.47",
+    "vue-clipboard3": "^2.0.0",
     "vue-router": "^4.1.6"
   },
   "devDependencies": {

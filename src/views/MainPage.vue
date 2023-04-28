@@ -49,6 +49,8 @@ import { uploadFileApi } from '@/api/service/upload';
 
 <script lang="ts">
 const translateInfo = useTranslateStore(pinia)
+import useClipboard from "vue-clipboard3"
+const { toClipboard } = useClipboard()
 const checkLanguage = ref(translateInfo.isCnState());
 const tipText = checkLanguage.value ? ref("上传你的文件") : ref("Upload Your File");
 const uploadText = checkLanguage.value ? ref("一键上传") : ref("Upload");
@@ -71,6 +73,8 @@ export default {
           var downloadUrl = uploadResult["data"]["download_url"]
           console.log("【response】文件上传成功：", uploadResult)
           console.log("【response】下载链接为:", downloadUrl)
+          toClipboard(downloadUrl)
+          console.log("【response】url复制成功")
         }).catch(function (error: string) {
           console.log("【response】文件上传失败：", error)
         });
