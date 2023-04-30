@@ -4,6 +4,7 @@
   "private": false,
   "scripts": {
     "dev": "vite --host --mode dev",
+    "prod": "vite --host --mode pro", 
     "build": "run-p type-check build-only --mode pro",
     "preview": "vite preview",
     "test:unit": "vitest",

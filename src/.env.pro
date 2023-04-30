@@ -1,3 +1,3 @@
 VITE_MODE_NAME=production
-VITE_BASE_URL="http://www.abitsoft.com"
+VITE_BASE_URL="http://127.30.3.2:8000"
 VERSION=23.03.23
