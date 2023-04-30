@@ -21,7 +21,7 @@ import { uploadFileApi } from '@/api/service/upload';
 
     <van-row justify="center">
       <van-col>
-        <van-uploader v-model="fileList" :after-read="afterRead">
+        <van-uploader v-model="fileList">
           <van-button type="primary" icon="plus" style="width:130px" round class="beginColorModify">{{ chooseText }}
           </van-button>
         </van-uploader>
@@ -64,15 +64,16 @@ export default {
     updateFile() {
       if (fileList.value.length < 1) {
         console.log("【request】error,当前无文件需要上传....")
+        showToast("当前未选择文件")
         return
       }
       else {
         console.log("【info】upload_file_size: ", fileList.value.length)
         uploadFileApi({
           "oss_file": fileList.value[0]["file"]
-        }).then(function (uploadResult: object) {
+        }).then(function (uploadResult: { [x: string]: { [x: string]: any; }; }) {
           var downloadUrl = uploadResult["data"]["download_url"]
-          console.log("【response】文件上传成功：", uploadResult)
+          console.log("【response】返回的结果数据为:", uploadResult)
           console.log("【response】下载链接为:", downloadUrl)
           toClipboard(downloadUrl)
           console.log("【response】url复制成功")
@@ -82,9 +83,6 @@ export default {
         });
       }
 
-    },
-    afterRead(file: File) {
-      return true;
     }
   }
 }

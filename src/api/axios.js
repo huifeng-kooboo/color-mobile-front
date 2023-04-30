@@ -6,7 +6,10 @@ import axios from 'axios'
 axios.defaults.baseURL = import.meta.env.VITE_BASE_URL
 axios.defaults.withCredentials = false
 axios.defaults.headers['X-Requested-With'] = 'XMLHttpRequest'
-// axios.defaults.headers['token'] = localStorage.getItem('token') || ''
+if (localStorage.getItem("token"))
+{
+  axios.defaults.headers['token'] = localStorage.getItem('token')
+}
 axios.defaults.headers.post['Content-Type'] = 'application/json'
 
 axios.interceptors.response.use(res => {
