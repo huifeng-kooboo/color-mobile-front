@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": false,
   "scripts": {
-    "dev": "vite --host",
-    "build": "run-p type-check build-only",
+    "dev": "vite --host --mode dev",
+    "build": "run-p type-check build-only --mode pro",
     "preview": "vite preview",
     "test:unit": "vitest",
     "build-only": "vite build",

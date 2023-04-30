@@ -3,7 +3,7 @@
 import axios from 'axios'
 
 // axios.defaults.baseURL = process.env.NODE_ENV == 'development' ? '//backend-api-01.newbee.ltd/api/v1' : '//backend-api-01.newbee.ltd/api/v1'
-axios.defaults.baseURL = "http://192.168.93.193:8000"
+axios.defaults.baseURL = import.meta.env.VITE_BASE_URL
 axios.defaults.withCredentials = false
 axios.defaults.headers['X-Requested-With'] = 'XMLHttpRequest'
 // axios.defaults.headers['token'] = localStorage.getItem('token') || ''
