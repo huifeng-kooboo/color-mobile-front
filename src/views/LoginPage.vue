@@ -34,12 +34,16 @@ import { ref } from 'vue';
 </template>
 <script lang="ts">
 import { loginApi } from '@/api/service/user';
+import router from '@/router';
 export default {
     data() {
         return {
-            password: ref(""),
+            password: ref("dutest12."),
             username: ref("admin")
         }
+    },
+    beforeMount() {
+      console.log("1222")  
     },
     methods: {
         onSubmit() {
@@ -51,6 +55,7 @@ export default {
                 var token = loginResult["data"]["access"]
                 console.log("获取cookie成功:", token)
                 localStorage.setItem("token", "Bearer " + token)
+                router.push("/")
             }).catch(function (error: string) {
                 console.log("【response】用户登录失败：", error)
             });
