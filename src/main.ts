@@ -9,7 +9,7 @@ import { Button, Switch, Divider, ConfigProvider,Uploader ,Row, Col, Space, Grid
 import { Swipe, SwipeItem, Icon, Pagination, Toast, Tag, Popup, Tab, Tabs } from 'vant';
 import { Image as VanImage } from 'vant';
 import {ElColorPicker, ElCarousel, ElCarouselItem, ElButtonGroup, ElButton} from 'element-plus'
-
+import { Form, CellGroup } from 'vant';
 
 // 2. 引入组件样式
 import 'element-plus/theme-chalk/index.css'
@@ -21,6 +21,8 @@ import './assets/main.css'
 // 4. 使用组件
 const app = createApp(App)
 app.use(pinia)
+app.use(Form)
+app.use(CellGroup)
 app.use(getActivePinia)
 app.use(Button)
 app.use(Switch)
