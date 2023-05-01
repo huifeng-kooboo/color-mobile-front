@@ -8,7 +8,8 @@ axios.defaults.withCredentials = false
 axios.defaults.headers['X-Requested-With'] = 'XMLHttpRequest'
 if (localStorage.getItem("token"))
 {
-  axios.defaults.headers['token'] = localStorage.getItem('token')
+  console.log("设置Token中")
+  axios.defaults.headers["Authorization"] = localStorage.getItem("token")
 }
 axios.defaults.headers.post['Content-Type'] = 'application/json'
 

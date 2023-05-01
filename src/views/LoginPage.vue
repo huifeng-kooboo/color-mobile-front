@@ -45,8 +45,15 @@ export default {
         onSubmit() {
             console.log("login-info:", this.username, this.password)
             console.log("进行登录的操作")
-            let requestData = { "username": this.username, "password": this.password }
-            loginApi(requestData)
+            let loginRequestData = { "username": this.username, "password": this.password }
+            loginApi(loginRequestData).then(function (loginResult: { [x: string]: { [x: string]: any; }; }) {
+                console.log("【response】登录返回的结果数据为:", loginResult)
+                var token = loginResult["data"]["access"]
+                console.log("获取cookie成功:", token)
+                localStorage.setItem("token", "Bearer " + token)
+            }).catch(function (error: string) {
+                console.log("【response】用户登录失败：", error)
+            });
         }
     }
 }
