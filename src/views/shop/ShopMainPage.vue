@@ -16,7 +16,7 @@
         </van-row>
 
         <van-row justify="center"
-            style="background-color: white; padding: 5px; --van-dropdown-menu-height: 30px; --van-dropdown-menu-title-font-size:14px;"
+            style="background-color: white; padding: 3px; --van-dropdown-menu-height: 30px; --van-dropdown-menu-title-font-size:14px;"
             v-for="item in menuOneResultList">
             <van-col>
                 <van-dropdown-menu active-color="black"
@@ -31,8 +31,12 @@
     </div>
 </template>
 <script lang="ts">
+import pinia from '@/store/store';
+import { useShopStore } from '@/store/shop/shopStore'
 import { ref } from 'vue'
 import { getMenuOneApi, getMenuTwoInfoByIdApi } from '@/api/shop/shop';
+
+const shopStoreTool = useShopStore(pinia)
 
 export default {
     name: "shopMain",
@@ -51,11 +55,13 @@ export default {
                     text: "全部商品2", value: 2
                 }
             ],
-            menuOneResultList: []
+            menuOneResultList: shopStoreTool.getMenuOneInfo()
         }
     },
     beforeMount() {
-        getMenuOneApi().then((menuOneResult: { [x: string]: { [x: string]: any; }; }) => {
+        if (shopStoreTool.getMenuOneInfo().length == 0)
+        {
+            getMenuOneApi().then((menuOneResult: { [x: string]: { [x: string]: any; }; }) => {
             console.log("【response】菜单项:", menuOneResult)
             let response_data = menuOneResult["data"]
             console.log("[response_data]", response_data)
@@ -64,9 +70,11 @@ export default {
                 let response_value = response_data[i]
                 this.menuOneResultList.push(response_value)
             }
+            shopStoreTool.setMenuOneInfo(this.menuOneResultList)
         }).catch(function (error: string) {
             console.log("【response】获取菜单项失败：", error)
         });
+        }
     },
     methods: {
         onOpenMenuOne(menuOneId: string) {
