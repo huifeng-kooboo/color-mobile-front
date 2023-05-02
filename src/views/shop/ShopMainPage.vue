@@ -15,9 +15,9 @@
             </van-col>
         </van-row>
 
-        <van-row style="background-color: #319be1;" v-for="item in menuOneResultList">
+        <van-row justify="center" style="background-color: white; padding: 5px; --van-dropdown-menu-height: 30px; --van-dropdown-menu-title-font-size:14px;" v-for="item in menuOneResultList">
             <van-col>
-                <van-dropdown-menu style="--van-dropdown-menu-background:#319be1; --van-dropdown-menu-title-text-color: white;">
+                <van-dropdown-menu active-color="black" style=" width: 400px; --van-dropdown-menu-background:#319be1; --van-dropdown-menu-title-text-color: white;">
                     <van-dropdown-item v-model="item['id']" :title="item['name']" :options="dropItemOptions" />
                 </van-dropdown-menu>
             </van-col>
