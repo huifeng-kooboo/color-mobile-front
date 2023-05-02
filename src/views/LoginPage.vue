@@ -3,9 +3,9 @@ import { ref } from 'vue';
 </script>
 
 <template>
-    <van-row class="loginLogo" justify="center">
+    <van-row class="loginLogo" justify="center" >
         <van-col>
-            <van-image width="200" height="200"
+            <van-image width="200" height="200" style="margin-top:40px;"
                 src="https://ytouch-1258011219.cos.ap-nanjing.myqcloud.com/zSm4FIlogo.png" />
         </van-col>
     </van-row>

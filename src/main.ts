@@ -6,8 +6,9 @@ import { getActivePinia } from 'pinia'
 
 // 1. 引入UI组件
 import { Button, Switch, Divider, ConfigProvider,Uploader ,Row, Col, Space, Grid, GridItem, Field} from 'vant'
-import { Swipe, SwipeItem, Icon, Pagination, Toast, Tag, Popup, Tab, Tabs } from 'vant';
+import { Swipe, SwipeItem, Icon, Pagination, Toast, Tag, Popup, Tab, Tabs, Search, Cascader} from 'vant';
 import { Image as VanImage } from 'vant';
+import { DropdownMenu, DropdownItem } from 'vant';
 import {ElColorPicker, ElCarousel, ElCarouselItem, ElButtonGroup, ElButton} from 'element-plus'
 import { Form, CellGroup } from 'vant';
 
@@ -50,4 +51,8 @@ app.use(VanImage)
 app.use(Tabs)
 app.use(Tab)
 app.use(Toast)
+app.use(DropdownMenu)
+app.use(DropdownItem)
+app.use(Cascader)
+app.use(Search)
 app.use(router).mount('#app')
