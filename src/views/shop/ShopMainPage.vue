@@ -15,23 +15,27 @@
             </van-col>
         </van-row>
 
-        <van-row justify="center" style="background-color: white; padding: 5px; --van-dropdown-menu-height: 30px; --van-dropdown-menu-title-font-size:14px;" v-for="item in menuOneResultList">
+        <van-row justify="center"
+            style="background-color: white; padding: 5px; --van-dropdown-menu-height: 30px; --van-dropdown-menu-title-font-size:14px;"
+            v-for="item in menuOneResultList">
             <van-col>
-                <van-dropdown-menu active-color="black" style=" width: 400px; --van-dropdown-menu-background:#319be1; --van-dropdown-menu-title-text-color: white;">
-                    <van-dropdown-item  v-model="item['id']" v-on:open="onOpenMenuOne(item['id'])"  :title="item['name']" :options="dropItemOptions" />
+                <van-dropdown-menu active-color="black"
+                    style=" width: 400px; --van-dropdown-menu-background:#319be1; --van-dropdown-menu-title-text-color: white;">
+                    <van-dropdown-item v-model="item['id']" v-on:open="onOpenMenuOne(item['id'])" :title="item['name']"
+                        :options="dropItemOptions" />
                 </van-dropdown-menu>
             </van-col>
-            <van-divider ></van-divider>
+            <van-divider></van-divider>
         </van-row>
 
     </div>
 </template>
 <script lang="ts">
 import { ref } from 'vue'
-import { getMenuOneApi, getMenuTwoApi} from '@/api/shop/shop';
+import { getMenuOneApi, getMenuTwoInfoByIdApi } from '@/api/shop/shop';
 
 export default {
-    name : "shopMain",
+    name: "shopMain",
     data() {
         return {
             searchContent: ref("iphone14"),
@@ -51,11 +55,11 @@ export default {
         }
     },
     beforeMount() {
-        getMenuOneApi().then( (menuOneResult: { [x: string]: { [x: string]: any; }; }) => {
+        getMenuOneApi().then((menuOneResult: { [x: string]: { [x: string]: any; }; }) => {
             console.log("【response】菜单项:", menuOneResult)
             let response_data = menuOneResult["data"]
             console.log("[response_data]", response_data)
-            for (let i = 0; i < response_data.length; i++){
+            for (let i = 0; i < response_data.length; i++) {
                 console.log(response_data[i])
                 let response_value = response_data[i]
                 this.menuOneResultList.push(response_value)
@@ -66,7 +70,27 @@ export default {
     },
     methods: {
         onOpenMenuOne(menuOneId: string) {
-            console.log("触发ok", menuOneId)
+            console.log("menuOneId:", menuOneId)
+            getMenuTwoInfoByIdApi(menuOneId).then((menuTwoResult: { [x: string]: { [x: string]: any; }; }) => {
+                console.log("【response】TwoResult菜单项:", menuTwoResult)
+                let response_data = menuTwoResult["data"]
+                console.log("[response_data]", response_data)
+                this.dropItemOptions = []
+                for (let i = 0; i < response_data.length; i++) {
+                    console.log(response_data[i])
+                    let response_value = response_data[i]
+                    let itemData = {
+                        text: response_value["name"],
+                        value: response_data["id"]
+                    }
+                    this.dropItemOptions.push(itemData)
+                }
+               
+            }).catch( (error: string) => {
+                this.dropItemOptions = []
+                console.log("【response】获取菜单项失败：", error)
+            });
+
         }
     }
 }
@@ -75,5 +99,4 @@ export default {
 <style>
 .shopMain {
     color: white;
-}
-</style>
+}</style>

@@ -5,6 +5,12 @@ export function getMenuOneApi() {
     return axios.get("/api/v1/shop/menu_one/");
 }
 
+
+export function getMenuTwoInfoByIdApi(strId) {
+   //  axios.defaults.headers.get['Content-Type'] = 'multipart/form-data'
+    return axios.get("/api/v1/shop/menu_two_info/"+strId + "/");
+}
+
 export function getMenuTwoApi() {
     axios.defaults.headers.get['Content-Type'] = 'multipart/form-data'
     return axios.get("/api/v1/shop/menu_two/");
