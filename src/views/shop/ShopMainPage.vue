@@ -18,7 +18,7 @@
         <van-row justify="center" style="background-color: white; padding: 5px; --van-dropdown-menu-height: 30px; --van-dropdown-menu-title-font-size:14px;" v-for="item in menuOneResultList">
             <van-col>
                 <van-dropdown-menu active-color="black" style=" width: 400px; --van-dropdown-menu-background:#319be1; --van-dropdown-menu-title-text-color: white;">
-                    <van-dropdown-item v-model="item['id']" :title="item['name']" :options="dropItemOptions" />
+                    <van-dropdown-item  v-model="item['id']" v-on:open="onOpenMenuOne(item['id'])"  :title="item['name']" :options="dropItemOptions" />
                 </van-dropdown-menu>
             </van-col>
             <van-divider ></van-divider>
@@ -28,7 +28,7 @@
 </template>
 <script lang="ts">
 import { ref } from 'vue'
-import { getMenuOneApi } from '@/api/shop/shop';
+import { getMenuOneApi, getMenuTwoApi} from '@/api/shop/shop';
 
 export default {
     name : "shopMain",
@@ -65,7 +65,9 @@ export default {
         });
     },
     methods: {
-
+        onOpenMenuOne(menuOneId: string) {
+            console.log("触发ok", menuOneId)
+        }
     }
 }
 </script>
