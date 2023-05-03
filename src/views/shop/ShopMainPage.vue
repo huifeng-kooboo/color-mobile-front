@@ -21,8 +21,17 @@
             <van-col>
                 <van-dropdown-menu active-color="black"
                     style=" width: 400px; --van-dropdown-menu-background:#319be1; --van-dropdown-menu-title-text-color: white;">
-                    <van-dropdown-item v-model="item['id']" v-on:open="onOpenMenuOne(item['id'])" :title="item['name']"
-                        :options="dropItemOptions" />
+                    <van-dropdown-item v-model="item['id']" v-on:open="onOpenMenuOne(item['id'])" :title="item['name']">
+                        <van-dropdown-menu>
+                            <van-row justify="center" v-for="dropItem in dropItemOptions" style="--van-dropdown-menu-height: 80px; ">
+                                <van-col>
+                                    <van-dropdown-item  v-model="dropItem['id']"
+                                    v-on:open="onOpenMenuTwo(dropItem['id'])" :title="dropItem['name']" :options="dropThreeItemOptions"></van-dropdown-item>
+                                </van-col>
+                            </van-row>
+
+                        </van-dropdown-menu>
+                    </van-dropdown-item>
                 </van-dropdown-menu>
             </van-col>
             <van-divider></van-divider>
@@ -34,7 +43,7 @@
 import pinia from '@/store/store';
 import { useShopStore } from '@/store/shop/shopStore'
 import { ref } from 'vue'
-import { getMenuOneApi, getMenuTwoInfoByIdApi } from '@/api/shop/shop';
+import { getMenuOneApi, getMenuTwoInfoByIdApi, getMenuThreeInfoByIdApi } from '@/api/shop/shop';
 
 const shopStoreTool = useShopStore(pinia)
 
@@ -46,39 +55,36 @@ export default {
             dropItemValue: ref("全部商品"),
             dropItemOptions: [
                 {
-                    text: "全部商品", value: 0
-                },
-                {
-                    text: "全部商品1", value: 1
-                },
-                {
-                    text: "全部商品2", value: 2
+                    "name": "全部商品", "id": 0
                 }
             ],
+            dropThreeItemOptions: [],
             menuOneResultList: shopStoreTool.getMenuOneInfo()
         }
     },
     beforeMount() {
-        if (shopStoreTool.getMenuOneInfo().length == 0)
-        {
+        if (shopStoreTool.getMenuOneInfo().length == 0) {
             getMenuOneApi().then((menuOneResult: { [x: string]: { [x: string]: any; }; }) => {
-            console.log("【response】菜单项:", menuOneResult)
-            let response_data = menuOneResult["data"]
-            console.log("[response_data]", response_data)
-            for (let i = 0; i < response_data.length; i++) {
-                console.log(response_data[i])
-                let response_value = response_data[i]
-                this.menuOneResultList.push(response_value)
-            }
-            shopStoreTool.setMenuOneInfo(this.menuOneResultList)
-        }).catch(function (error: string) {
-            console.log("【response】获取菜单项失败：", error)
-        });
+                console.log("【response】菜单项:", menuOneResult)
+                let response_data = menuOneResult["data"]
+                console.log("[response_data]", response_data)
+                for (let i = 0; i < response_data.length; i++) {
+                    console.log(response_data[i])
+                    let response_value = response_data[i]
+                    this.menuOneResultList.push(response_value)
+                }
+                shopStoreTool.setMenuOneInfo(this.menuOneResultList)
+            }).catch(function (error: string) {
+                console.log("【response】获取菜单项失败：", error)
+            });
         }
     },
     methods: {
         onOpenMenuOne(menuOneId: string) {
             console.log("menuOneId:", menuOneId)
+            if (menuOneId == undefined) {
+
+            }
             getMenuTwoInfoByIdApi(menuOneId).then((menuTwoResult: { [x: string]: { [x: string]: any; }; }) => {
                 console.log("【response】TwoResult菜单项:", menuTwoResult)
                 let response_data = menuTwoResult["data"]
@@ -87,18 +93,45 @@ export default {
                 for (let i = 0; i < response_data.length; i++) {
                     console.log(response_data[i])
                     let response_value = response_data[i]
+                    let itemId: string = response_value["id"]
+                    let itemName: string = response_value["name"]
                     let itemData = {
-                        text: response_value["name"],
-                        value: response_data["id"]
+                        "name": itemName,
+                        "id": itemId
                     }
+                    console.log("item:", itemData)
                     this.dropItemOptions.push(itemData)
                 }
-               
-            }).catch( (error: string) => {
+
+            }).catch((error: string) => {
                 this.dropItemOptions = []
                 console.log("【response】获取菜单项失败：", error)
             });
+        },
+        onOpenMenuTwo(menuTwoId: string) {
+            console.log("menuTwoId:", menuTwoId)
+            if (menuTwoId == undefined) {
 
+            }
+            getMenuThreeInfoByIdApi(menuTwoId).then((menuTwoResult: { [x: string]: { [x: string]: any; }; }) => {
+                console.log("【response】ThreeResult菜单项:", menuTwoResult)
+                let response_data = menuTwoResult["data"]
+                console.log("[response_data]", response_data)
+                this.dropThreeItemOptions = []
+                for (let i = 0; i < response_data.length; i++) {
+                    console.log(response_data[i])
+                    let response_value = response_data[i]
+                    let itemData = {
+                        text : response_value["name"],
+                        value : response_value["id"]
+                    }
+                    this.dropThreeItemOptions.push(itemData)
+                }
+
+            }).catch((error: string) => {
+                this.dropThreeItemOptions = []
+                console.log("【response】获取菜单项失败：", error)
+            });
         }
     }
 }
@@ -107,4 +140,5 @@ export default {
 <style>
 .shopMain {
     color: white;
-}</style>
+}
+</style>
