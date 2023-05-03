@@ -22,15 +22,15 @@
                 <van-dropdown-menu active-color="black"
                     style=" width: 400px; --van-dropdown-menu-background:#319be1; --van-dropdown-menu-title-text-color: white;">
                     <van-dropdown-item v-model="item['id']" v-on:open="onOpenMenuOne(item['id'])" :title="item['name']">
+                        <van-row justify="center" v-for="dropItem in dropItemOptions" style="--van-dropdown-menu-height: 40px; ">
                         <van-dropdown-menu>
-                            <van-row justify="center" v-for="dropItem in dropItemOptions" style="--van-dropdown-menu-height: 80px; ">
+                           
                                 <van-col>
                                     <van-dropdown-item  v-model="dropItem['id']"
                                     v-on:open="onOpenMenuTwo(dropItem['id'])" :title="dropItem['name']" :options="dropThreeItemOptions"></van-dropdown-item>
                                 </van-col>
-                            </van-row>
-
                         </van-dropdown-menu>
+                    </van-row>
                     </van-dropdown-item>
                 </van-dropdown-menu>
             </van-col>
