@@ -11,7 +11,7 @@
             <van-col span="15">
                 <van-search v-model="searchContent"
                     style="font-size: 14px;  --van-search-input-height: 30px; margin-right:20px;" shape="round"
-                    background="#1baeae" placeholder="请输入搜索关键词" />
+                    background="#1baeae" placeholder="请输入商品名称" />
             </van-col>
         </van-row>
 
@@ -23,7 +23,7 @@
                     style=" width: 400px; --van-dropdown-menu-background:#319be1; --van-dropdown-menu-title-text-color: white;">
                     <van-dropdown-item v-model="item['id']" v-on:open="onOpenMenuOne(item['id'])" :title="item['name']">
                         <van-row justify="center" v-for="dropItem in dropItemOptions" style="--van-dropdown-menu-height: 40px; ">
-                        <van-dropdown-menu>
+                        <van-dropdown-menu style="--van-dropdown-menu-background:#319be1; width: 400px;">
                            
                                 <van-col>
                                     <van-dropdown-item  v-model="dropItem['id']"
