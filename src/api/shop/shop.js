@@ -15,6 +15,11 @@ export function getMenuThreeInfoByIdApi(strId) {
     //  axios.defaults.headers.get['Content-Type'] = 'multipart/form-data'
      return axios.get("/api/v1/shop/menu_three_info/"+strId + "/");
  }
+
+ export function getProductInfoByIdApi(strId) {
+    //  axios.defaults.headers.get['Content-Type'] = 'multipart/form-data'
+     return axios.get("/api/v1/shop/product_info/"+strId + "/");
+ }
  
 
 export function getMenuTwoApi() {
